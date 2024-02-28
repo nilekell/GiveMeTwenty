@@ -10,37 +10,37 @@ import SwiftUI
 
 class SettingsViewModel: ObservableObject {
     // Configure app to send reminders every x hours
-    @Published var reminderFrequency = 2 {
+    @Published var reminderFrequency: Int = 2 {
         didSet {
             updateReminderFrequency()
         }
     }
     
     // Configure app to send notifications or not
-    @Published var notificationsEnabled = true {
+    @Published var notificationsEnabled: Bool = true {
         didSet {
             toggleNotifications()
         }
     }
     
     // Configure app to run when computer starts
-    @Published var runWhenComputerStarts = true {
+    @Published var runWhenComputerStarts: Bool = true {
         didSet {
             toggleRunWhenComputerStarts()
         }
     }
     
     // Configure app to appear in menu bar or not
-    @Published var showAppInMenuBar = true {
+    @Published var showAppInMenuBar: Bool = true {
         didSet {
             toggleShowAppInMenuBar()
         }
     }
     
     // Configure message to show on popUp Menu
-    @Published var popUpMenuMessage = "Give Me Twenty!" {
+    @Published var popUpMenuMessage: String = "Give Me Twenty!" {
         didSet {
-            toggleShowAppInMenuBar()
+            updatePopUpMenuMessage()
         }
     }
     
