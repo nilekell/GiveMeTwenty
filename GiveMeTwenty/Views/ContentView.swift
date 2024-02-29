@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var settingsViewModel: SettingsViewModel
     
-    let reminderFrequencies = [1, 2, 3, 4, 5, 6, 7, 8]
+    private let reminderFrequencies = [1, 2, 3, 4, 5, 6, 7, 8]
     
     var body: some View {
         VStack(alignment: .leading) {
