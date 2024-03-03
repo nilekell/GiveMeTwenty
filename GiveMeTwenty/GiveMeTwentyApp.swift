@@ -10,7 +10,8 @@ import SwiftUI
 @main
 struct GiveMeTwentyApp: App {
     
-    @AppStorage(SettingsKeys.showAppInMenuBar) var showAppInMenuBar: Bool = true
+    // not meant to be changed
+    @AppStorage(SettingsKeys.showAppInMenuBar) private let showAppInMenuBar: Bool = true
     
     var body: some Scene {
         #if os(macOS)

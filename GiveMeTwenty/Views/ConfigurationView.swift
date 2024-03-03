@@ -19,7 +19,7 @@ struct ConfigurationView: View {
     @AppStorage(SettingsKeys.runWhenComputerStarts) var runWhenComputerStarts: Bool = true
     
     // Configure app to appear in menu bar or not
-    @AppStorage(SettingsKeys.showAppInMenuBar) var showAppInMenuBar: Bool = true
+    @AppStorage(SettingsKeys.showTimerInMenuBar) var showTimerInMenuBar: Bool = true
     
     // Configure message to show on popUp Menu & Notification
     @AppStorage(SettingsKeys.popUpMenuMessage) var popUpMenuMessage: String = "Time to give me twenty!"
@@ -63,8 +63,8 @@ struct ConfigurationView: View {
                 .clipped()
                 .padding()
             
-            Toggle(isOn: $showAppInMenuBar) {
-                Text("Show app in menu bar")
+            Toggle(isOn: $showTimerInMenuBar) {
+                Text("Show timer in menu bar")
             }
             .toggleStyle(.checkbox)
             .padding()
