@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		225570A82B89179600DB8618 /* GiveMeTwentyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225570A72B89179600DB8618 /* GiveMeTwentyApp.swift */; };
-		225570AA2B89179600DB8618 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225570A92B89179600DB8618 /* ContentView.swift */; };
+		225570AA2B89179600DB8618 /* ConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225570A92B89179600DB8618 /* ConfigurationView.swift */; };
 		225570AC2B89179700DB8618 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 225570AB2B89179700DB8618 /* Assets.xcassets */; };
 		225570AF2B89179700DB8618 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 225570AE2B89179700DB8618 /* Preview Assets.xcassets */; };
 		22668B212B94BE76009B1516 /* SettingsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22668B202B94BE76009B1516 /* SettingsKeys.swift */; };
@@ -17,7 +17,7 @@
 /* Begin PBXFileReference section */
 		225570A42B89179600DB8618 /* GiveMeTwenty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GiveMeTwenty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		225570A72B89179600DB8618 /* GiveMeTwentyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiveMeTwentyApp.swift; sourceTree = "<group>"; };
-		225570A92B89179600DB8618 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		225570A92B89179600DB8618 /* ConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationView.swift; sourceTree = "<group>"; };
 		225570AB2B89179700DB8618 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		225570AE2B89179700DB8618 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		225570B02B89179700DB8618 /* GiveMeTwenty.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GiveMeTwenty.entitlements; sourceTree = "<group>"; };
@@ -75,7 +75,7 @@
 		22584EE82B8E8770007392F5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				225570A92B89179600DB8618 /* ContentView.swift */,
+				225570A92B89179600DB8618 /* ConfigurationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -150,7 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				225570AA2B89179600DB8618 /* ContentView.swift in Sources */,
+				225570AA2B89179600DB8618 /* ConfigurationView.swift in Sources */,
 				225570A82B89179600DB8618 /* GiveMeTwentyApp.swift in Sources */,
 				22668B212B94BE76009B1516 /* SettingsKeys.swift in Sources */,
 			);
