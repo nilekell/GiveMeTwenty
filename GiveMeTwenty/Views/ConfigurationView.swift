@@ -21,7 +21,7 @@ struct ConfigurationView: View {
     // Configure app to appear in menu bar or not
     @AppStorage(SettingsKeys.showAppInMenuBar) var showAppInMenuBar: Bool = true
     
-    // Configure message to show on popUp Menu
+    // Configure message to show on popUp Menu & Notification
     @AppStorage(SettingsKeys.popUpMenuMessage) var popUpMenuMessage: String = "Time to give me twenty!"
     
     private let reminderFrequencyOptions = [1, 2, 3, 4, 5, 6, 7, 8]
