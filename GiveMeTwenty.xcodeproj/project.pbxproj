@@ -11,8 +11,7 @@
 		225570AA2B89179600DB8618 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225570A92B89179600DB8618 /* ContentView.swift */; };
 		225570AC2B89179700DB8618 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 225570AB2B89179700DB8618 /* Assets.xcassets */; };
 		225570AF2B89179700DB8618 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 225570AE2B89179700DB8618 /* Preview Assets.xcassets */; };
-		225570B72B8E6C0100DB8618 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225570B62B8E6C0100DB8618 /* SettingsViewModel.swift */; };
-		225570BA2B8E850200DB8618 /* UserDefaultsPersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225570B92B8E850200DB8618 /* UserDefaultsPersistenceService.swift */; };
+		22668B212B94BE76009B1516 /* SettingsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22668B202B94BE76009B1516 /* SettingsKeys.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,8 +21,7 @@
 		225570AB2B89179700DB8618 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		225570AE2B89179700DB8618 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		225570B02B89179700DB8618 /* GiveMeTwenty.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GiveMeTwenty.entitlements; sourceTree = "<group>"; };
-		225570B62B8E6C0100DB8618 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
-		225570B92B8E850200DB8618 /* UserDefaultsPersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsPersistenceService.swift; sourceTree = "<group>"; };
+		22668B202B94BE76009B1516 /* SettingsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsKeys.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +54,9 @@
 		225570A62B89179600DB8618 /* GiveMeTwenty */ = {
 			isa = PBXGroup;
 			children = (
-				22584EE92B8E878F007392F5 /* ViewModels */,
 				22584EE82B8E8770007392F5 /* Views */,
-				225570B82B8E84E900DB8618 /* Services */,
 				225570A72B89179600DB8618 /* GiveMeTwentyApp.swift */,
+				22668B202B94BE76009B1516 /* SettingsKeys.swift */,
 				225570AB2B89179700DB8618 /* Assets.xcassets */,
 				225570B02B89179700DB8618 /* GiveMeTwenty.entitlements */,
 				225570AD2B89179700DB8618 /* Preview Content */,
@@ -75,28 +72,12 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		225570B82B8E84E900DB8618 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				225570B92B8E850200DB8618 /* UserDefaultsPersistenceService.swift */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
 		22584EE82B8E8770007392F5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				225570A92B89179600DB8618 /* ContentView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		22584EE92B8E878F007392F5 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				225570B62B8E6C0100DB8618 /* SettingsViewModel.swift */,
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,10 +150,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				225570BA2B8E850200DB8618 /* UserDefaultsPersistenceService.swift in Sources */,
 				225570AA2B89179600DB8618 /* ContentView.swift in Sources */,
 				225570A82B89179600DB8618 /* GiveMeTwentyApp.swift in Sources */,
-				225570B72B8E6C0100DB8618 /* SettingsViewModel.swift in Sources */,
+				22668B212B94BE76009B1516 /* SettingsKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,8 +291,10 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GiveMeTwenty/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = GiveMeTwenty;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -340,8 +322,10 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GiveMeTwenty/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = GiveMeTwenty;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
