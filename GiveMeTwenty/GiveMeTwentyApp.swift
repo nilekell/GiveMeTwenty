@@ -10,6 +10,10 @@ import SwiftUI
 @main
 struct GiveMeTwentyApp: App {
     
+    init() {
+        showAppInMenuBar = true
+    }
+    
     // not meant to be changed
     @AppStorage(SettingsKeys.showAppInMenuBar) private var showAppInMenuBar: Bool = true
     
