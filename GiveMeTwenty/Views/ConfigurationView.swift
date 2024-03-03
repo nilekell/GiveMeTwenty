@@ -9,10 +9,10 @@ import SwiftUI
 
 struct ConfigurationView: View {
     // Configure app to send reminders every x hours
-    @AppStorage(SettingsKeys.reminderFrequency) var reminderFrequency: Int = 1
+    @AppStorage(SettingsKeys.reminderFrequency) var reminderFrequency: Int = 2
     
     // Configure app to send notifications or not
-    @AppStorage(SettingsKeys.notificationsEnabled) var notificationsEnabled: Bool = true
+    @AppStorage(SettingsKeys.notificationsEnabled) var notificationsEnabled: Bool = false
     
     // Configure app to run when computer starts
     @AppStorage(SettingsKeys.runWhenComputerStarts) var runWhenComputerStarts: Bool = true
