@@ -18,7 +18,7 @@ struct ConfigurationView: View {
     // Configure app to run when computer starts
     @AppStorage(SettingsKeys.runWhenComputerStarts) var runWhenComputerStarts: Bool = true
     
-    // Configure app to appear in menu bar or not
+    // Configure timer to appear in menu bar or not
     @AppStorage(SettingsKeys.showTimerInMenuBar) var showTimerInMenuBar: Bool = true
     
     // Configure message to show on popUp Menu & Notification
