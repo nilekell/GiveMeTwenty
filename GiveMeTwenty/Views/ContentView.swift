@@ -7,40 +7,53 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    @EnvironmentObject var settingsViewModel: SettingsViewModel
+struct ConfigurationView: View {
+    // Configure app to send reminders every x hours
+    @AppStorage(SettingsKeys.reminderFrequency) var reminderFrequency: Int = 1
     
-    private let reminderFrequencies = [1, 2, 3, 4, 5, 6, 7, 8]
+    // Configure app to send notifications or not
+    @AppStorage(SettingsKeys.notificationsEnabled) var notificationsEnabled: Bool = true
+    
+    // Configure app to run when computer starts
+    @AppStorage(SettingsKeys.runWhenComputerStarts) var runWhenComputerStarts: Bool = true
+    
+    // Configure app to appear in menu bar or not
+    @AppStorage(SettingsKeys.showAppInMenuBar) var showAppInMenuBar: Bool = true
+    
+    // Configure message to show on popUp Menu
+    @AppStorage(SettingsKeys.popUpMenuMessage) var popUpMenuMessage: String = "Give Me Twenty!"
+    
+    private let reminderFrequencyOptions = [1, 2, 3, 4, 5, 6, 7, 8]
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Picker("Every", selection: $settingsViewModel.reminderFrequency) {
-                    ForEach(reminderFrequencies, id: \.self) {
+                Picker("Every", selection: $reminderFrequency) {
+                    ForEach(reminderFrequencyOptions, id: \.self) {
                         Text($0.description)
                     }
                 }
                 .frame(width: 80)
                 .clipped()
                 
-                Text("hours take a break.")
+                Text("hours remind me.")
                 
             }
             .padding()
             
-            Toggle(isOn: $settingsViewModel.notificationsEnabled) {
+            Toggle(isOn: $notificationsEnabled) {
                 Text("Enable notifications")
             }
             .toggleStyle(.checkbox)
             .padding()
             
-            Toggle(isOn: $settingsViewModel.runWhenComputerStarts) {
+            Toggle(isOn: $runWhenComputerStarts) {
                 Text("Run when computer starts")
             }
             .toggleStyle(.checkbox)
             .padding()
             
-            Toggle(isOn: $settingsViewModel.showAppInMenuBar) {
+            Toggle(isOn: $showAppInMenuBar) {
                 Text("Show app in menu bar")
             }
             .toggleStyle(.checkbox)
@@ -53,6 +66,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
-        .environmentObject(SettingsViewModel())
+    ConfigurationView()
 }

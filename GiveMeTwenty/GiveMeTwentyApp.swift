@@ -14,8 +14,8 @@ struct GiveMeTwentyApp: App {
     
     var body: some Scene {
         #if os(macOS)
-        MenuBarExtra(isInserted: $settingsViewModel.showAppInMenuBar) {
-            ContentView()
+        MenuBarExtra(isInserted: $showAppInMenuBar) {
+            ConfigurationView()
                 .navigationTitle("GiveMeTwenty")
         } label: {
             Label("GiveMeTwenty", systemImage: "star")

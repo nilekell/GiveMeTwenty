@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+enum SettingsKeys {
+    static let reminderFrequency = "reminderFrequency"
+    static let runWhenComputerStarts = "runWhenComputerStarts"
+    static let showAppInMenuBar = "showAppInMenuBar"
+    static let popUpMenuMessage = "popUpMenuMessage"
+    static let notificationsEnabled = "notificationsEnabled"
+}
