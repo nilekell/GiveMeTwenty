@@ -9,7 +9,8 @@ import SwiftUI
 
 @main
 struct GiveMeTwentyApp: App {
-    @StateObject private var settingsViewModel = SettingsViewModel()
+    
+    @AppStorage(SettingsKeys.showAppInMenuBar) var showAppInMenuBar: Bool = true
     
     var body: some Scene {
         #if os(macOS)
@@ -20,13 +21,6 @@ struct GiveMeTwentyApp: App {
             Label("GiveMeTwenty", systemImage: "star")
         }
         .menuBarExtraStyle(.window)
-        .environmentObject(settingsViewModel)
         #endif
-        
-        WindowGroup {
-            ContentView()
-                .navigationTitle("GiveMeTwenty")
-                .environmentObject(settingsViewModel)
-        }
     }
 }
