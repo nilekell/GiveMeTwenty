@@ -47,6 +47,12 @@ struct ConfigurationView: View {
             }
             .toggleStyle(.checkbox)
             .padding()
+            .onChange(of: notificationsEnabled, initial: true) { oldValue, newValue in
+                print(oldValue)
+                print(newValue)
+                requestNotificationPermissions(newValue)
+                updateNotificationConfig(newValue)
+            }
             
             Toggle(isOn: $runWhenComputerStarts) {
                 Text("Run when computer starts")
@@ -79,6 +85,57 @@ struct ConfigurationView: View {
         }
         .frame(minWidth: 400, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity, alignment: .topLeading)
         .padding()
+    }
+    
+    func requestNotificationPermissions(_ notificationsEnabled: Bool) {
+        if notificationsEnabled {
+            // do this stuff when notifications have been enabled
+            let center = UNUserNotificationCenter.current()
+            center.getNotificationSettings { settings in
+                if settings.authorizationStatus != .authorized {
+                    center.requestAuthorization(options: [.alert, .sound]) { success, error in
+                        if success {
+                            print("Notification permissions granted.")
+                        } else if let error {
+                            print(error.localizedDescription)
+                        }
+                    }
+                }
+            }
+        } else {
+            print("skipping request for notification permissions, notifications disabled by user.")
+        }
+    }
+    
+    func updateNotificationConfig(_ notificationsEnabled: Bool) {
+        let center = UNUserNotificationCenter.current()
+        
+        if notificationsEnabled {
+            // do this stuff when notifications have been enabled
+            let content = UNMutableNotificationContent()
+            content.title = "GiveMeTwenty"
+            content.subtitle = popUpMenuMessage
+            content.sound = UNNotificationSound.default
+            
+            let reminderFrequencyInSeconds = reminderFrequency * 60 * 60
+            let interval: TimeInterval = TimeInterval(reminderFrequencyInSeconds)
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: interval, repeats: true)
+            
+            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+            center.add(request) { error in
+                if let error {
+                    print("Error scheduling notification: \(error.localizedDescription)")
+                } else {
+                    print("Added notification request.")
+                }
+            }
+        } else {
+            // disabling notifications
+            center.removeAllDeliveredNotifications()
+            center.removeAllPendingNotificationRequests()
+            print("disabled notifications")
+        }
     }
 }
 
