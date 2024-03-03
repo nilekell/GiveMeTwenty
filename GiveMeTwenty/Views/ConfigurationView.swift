@@ -48,8 +48,6 @@ struct ConfigurationView: View {
             .toggleStyle(.checkbox)
             .padding()
             .onChange(of: notificationsEnabled, initial: true) { oldValue, newValue in
-                print(oldValue)
-                print(newValue)
                 requestNotificationPermissions(newValue)
                 updateNotificationConfig(newValue)
             }
