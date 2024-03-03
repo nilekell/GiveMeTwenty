@@ -77,7 +77,7 @@ struct ConfigurationView: View {
             .padding()
             
         }
-        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+        .frame(minWidth: 400, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity, alignment: .topLeading)
         .padding()
     }
 }
