@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 struct ConfigurationView: View {
     // Configure app to send reminders every x hours
@@ -52,6 +53,15 @@ struct ConfigurationView: View {
             }
             .toggleStyle(.checkbox)
             .padding()
+            
+            Text("Edit the message to be shown in notifications and the pop up screen:")
+                .padding(.horizontal)
+            
+            TextField(popUpMenuMessage, text: $popUpMenuMessage)
+                .textFieldStyle(.roundedBorder)
+                .frame(width: 150)
+                .clipped()
+                .padding()
             
             Toggle(isOn: $showAppInMenuBar) {
                 Text("Show app in menu bar")
