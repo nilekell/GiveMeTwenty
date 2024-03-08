@@ -139,15 +139,6 @@ struct ConfigurationView: View {
             print("disabled notifications")
         }
     }
-    
-    func toggleRunWhenComputerStarts(_ runWhenComputerStarts: Bool) {
-        // enable/disable app to start on computer login
-//        if runWhenComputerStarts {
-//            NSApplication.shared.enableRelaunchOnLogin()
-//        } else {
-//            NSApplication.shared.disableRelaunchOnLogin()
-//        }
-    }
 }
 
 #Preview {
