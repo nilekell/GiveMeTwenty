@@ -17,15 +17,31 @@ struct GiveMeTwentyApp: App {
     // not meant to be changed
     @AppStorage(SettingsKeys.showAppInMenuBar) private var showAppInMenuBar: Bool = true
     
+    #if os(macOS)
+    @State var window: NSWindow?
+    @AppStorage("showCoverView") private var showCoverView: Bool = true
+    #endif
+
+    
     var body: some Scene {
         #if os(macOS)
         MenuBarExtra(isInserted: $showAppInMenuBar) {
             ConfigurationView()
-                .navigationTitle("GiveMeTwenty")
         } label: {
             Label("GiveMeTwenty", systemImage: "star")
         }
         .menuBarExtraStyle(.window)
+        
+        Window("Give Me Twenty", id: "CoverViewWindow", content: {
+            CoverView()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(VisualEffectView().ignoresSafeArea())
+                .onAppear(perform: {
+                    window?.titleVisibility = .hidden
+                    window?.styleMask.remove(.titled)
+                })
+        }).windowStyle(.hiddenTitleBar)
+            
         #endif
     }
 }
