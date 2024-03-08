@@ -36,6 +36,9 @@ struct ConfigurationView: View {
                 }
                 .frame(width: 80)
                 .clipped()
+                .onChange(of: reminderFrequency) {
+                    updateNotificationConfig(notificationsEnabled)
+                }
                 
                 Text("hours remind me.")
                 
@@ -47,7 +50,7 @@ struct ConfigurationView: View {
             }
             .toggleStyle(.checkbox)
             .padding()
-            .onChange(of: notificationsEnabled, initial: true) { oldValue, newValue in
+            .onChange(of: notificationsEnabled) { oldValue, newValue in
                 requestNotificationPermissions(newValue)
                 updateNotificationConfig(newValue)
             }
