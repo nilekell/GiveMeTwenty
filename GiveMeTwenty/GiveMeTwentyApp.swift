@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+#if os(macOS)
 @main
 struct GiveMeTwentyApp: App {
     
@@ -17,17 +18,13 @@ struct GiveMeTwentyApp: App {
     // not meant to be changed
     @AppStorage(SettingsKeys.showAppInMenuBar) private var showAppInMenuBar: Bool = true
     
-    #if os(macOS)
-    @State var window: NSWindow?
     @AppStorage("showCoverView") private var showCoverView: Bool = true
-    #endif
     
     // Accessing App Delegate
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     
     var body: some Scene {
-        #if os(macOS)
         MenuBarExtra(isInserted: $showAppInMenuBar) {
             ConfigurationView()
         } label: {
@@ -40,8 +37,6 @@ struct GiveMeTwentyApp: App {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(BlurEffectView().ignoresSafeArea())
         }).windowStyle(.hiddenTitleBar) // hiding title bar itself
-            
-        #endif
     }
 }
 
@@ -58,3 +53,4 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.standardWindowButton(.zoomButton)?.isHidden = true
     }
 }
+#endif
