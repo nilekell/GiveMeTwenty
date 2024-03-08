@@ -34,8 +34,8 @@ struct ConfigurationView: View {
                 }
                 .frame(width: 80)
                 .clipped()
-                .onChange(of: reminderFrequency) {
-                    updateNotificationConfig(notificationsEnabled)
+                .onChange(of: reminderFrequency) { oldValue, newValue in
+                    updateNotificationConfig(notificationsEnabled, popUpMenuMessage, newValue)
                 }
                 
                 Text("hours remind me.")
@@ -50,7 +50,7 @@ struct ConfigurationView: View {
             .padding()
             .onChange(of: notificationsEnabled) { oldValue, newValue in
                 requestNotificationPermissions(newValue)
-                updateNotificationConfig(newValue)
+                updateNotificationConfig(newValue, popUpMenuMessage, reminderFrequency)
             }
             
             LaunchAtLogin.Toggle("Run when computer starts")
@@ -66,6 +66,9 @@ struct ConfigurationView: View {
                 .clipped()
                 .padding(.horizontal)
                 .padding(.bottom)
+                .onChange(of: popUpMenuMessage) { oldValue, newValue in
+                    updateNotificationConfig(notificationsEnabled, newValue, reminderFrequency)
+                }
             
             Toggle(isOn: $showTimerInMenuBar) {
                 Text("Show timer in menu bar")
@@ -105,17 +108,20 @@ struct ConfigurationView: View {
         }
     }
     
-    func updateNotificationConfig(_ notificationsEnabled: Bool) {
+    func updateNotificationConfig(_ notisEnabled: Bool, _ message: String, _ reminderFreq: Int) {
+        
+        print("notisEnabled: \(notisEnabled), message: \(message), reminderFreq: \(reminderFreq)")
+        
         let center = UNUserNotificationCenter.current()
         
-        if notificationsEnabled {
+        if notisEnabled {
             // do this stuff when notifications have been enabled
             let content = UNMutableNotificationContent()
             content.title = "GiveMeTwenty"
-            content.subtitle = popUpMenuMessage
+            content.subtitle = message
             content.sound = UNNotificationSound.default
             
-            let reminderFrequencyInSeconds = reminderFrequency * 60 * 60
+            let reminderFrequencyInSeconds = reminderFreq * 60 * 60
             let interval: TimeInterval = TimeInterval(reminderFrequencyInSeconds)
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: interval, repeats: true)
