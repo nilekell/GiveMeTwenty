@@ -63,12 +63,14 @@ struct ConfigurationView: View {
             
             Text("Edit the message to be shown in notifications and the pop up screen:")
                 .padding(.horizontal)
+                .padding(.top)
             
             TextField(popUpMenuMessage, text: $popUpMenuMessage)
                 .textFieldStyle(.roundedBorder)
                 .frame(width: 150)
                 .clipped()
-                .padding()
+                .padding(.horizontal)
+                .padding(.bottom)
             
             Toggle(isOn: $showTimerInMenuBar) {
                 Text("Show timer in menu bar")
