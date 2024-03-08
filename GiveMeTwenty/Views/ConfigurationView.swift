@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UserNotifications
+import LaunchAtLogin
 
 struct ConfigurationView: View {
     // Configure app to send reminders every x hours
@@ -14,9 +15,6 @@ struct ConfigurationView: View {
     
     // Configure app to send notifications or not
     @AppStorage(SettingsKeys.notificationsEnabled) var notificationsEnabled: Bool = false
-    
-    // Configure app to run when computer starts
-    @AppStorage(SettingsKeys.runWhenComputerStarts) var runWhenComputerStarts: Bool = true
     
     // Configure timer to appear in menu bar or not
     @AppStorage(SettingsKeys.showTimerInMenuBar) var showTimerInMenuBar: Bool = true
@@ -55,11 +53,8 @@ struct ConfigurationView: View {
                 updateNotificationConfig(newValue)
             }
             
-            Toggle(isOn: $runWhenComputerStarts) {
-                Text("Run when computer starts")
-            }
-            .toggleStyle(.checkbox)
-            .padding()
+            LaunchAtLogin.Toggle("Run when computer starts")
+                .padding()
             
             Text("Edit the message to be shown in notifications and the pop up screen:")
                 .padding(.horizontal)
@@ -143,6 +138,15 @@ struct ConfigurationView: View {
             center.removeAllPendingNotificationRequests()
             print("disabled notifications")
         }
+    }
+    
+    func toggleRunWhenComputerStarts(_ runWhenComputerStarts: Bool) {
+        // enable/disable app to start on computer login
+//        if runWhenComputerStarts {
+//            NSApplication.shared.enableRelaunchOnLogin()
+//        } else {
+//            NSApplication.shared.disableRelaunchOnLogin()
+//        }
     }
 }
 

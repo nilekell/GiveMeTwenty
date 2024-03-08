@@ -14,6 +14,7 @@
 		22668B212B94BE76009B1516 /* SettingsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22668B202B94BE76009B1516 /* SettingsKeys.swift */; };
 		22668B252B9A56EC009B1516 /* CoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22668B242B9A56EC009B1516 /* CoverView.swift */; };
 		22668B272B9B69E0009B1516 /* BlurEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22668B262B9B69E0009B1516 /* BlurEffectView.swift */; };
+		22D9FB3C2B9B79E20014F132 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 22D9FB3B2B9B79E20014F132 /* LaunchAtLogin */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22D9FB3C2B9B79E20014F132 /* LaunchAtLogin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +104,9 @@
 			dependencies = (
 			);
 			name = GiveMeTwenty;
+			packageProductDependencies = (
+				22D9FB3B2B9B79E20014F132 /* LaunchAtLogin */,
+			);
 			productName = GiveMeTwenty;
 			productReference = 225570A42B89179600DB8618 /* GiveMeTwenty.app */;
 			productType = "com.apple.product-type.application";
@@ -130,6 +135,9 @@
 				Base,
 			);
 			mainGroup = 2255709B2B89179600DB8618;
+			packageReferences = (
+				22D9FB3A2B9B79E20014F132 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
+			);
 			productRefGroup = 225570A52B89179600DB8618 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -369,6 +377,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		22D9FB3A2B9B79E20014F132 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin-Modern";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		22D9FB3B2B9B79E20014F132 /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22D9FB3A2B9B79E20014F132 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */;
+			productName = LaunchAtLogin;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2255709C2B89179600DB8618 /* Project object */;
 }
