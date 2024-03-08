@@ -53,8 +53,6 @@ struct ConfigurationView: View {
                 updateNotificationConfig(newValue, popUpMenuMessage, reminderFrequency)
             }
             
-            LaunchAtLogin.Toggle("Run when computer starts")
-                .padding()
             
             Text("Edit the message to be shown in notifications and the pop up screen:")
                 .padding(.horizontal)
@@ -75,6 +73,9 @@ struct ConfigurationView: View {
             }
             .toggleStyle(.checkbox)
             .padding()
+            
+            LaunchAtLogin.Toggle("Run when computer starts")
+                .padding()
             
             Button(action: {
                 NSApp.terminate(self)
