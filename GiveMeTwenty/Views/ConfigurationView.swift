@@ -121,6 +121,10 @@ struct ConfigurationView: View {
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: interval, repeats: true)
             
             let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+            
+            center.removeAllDeliveredNotifications()
+            center.removeAllPendingNotificationRequests()
+            
             center.add(request) { error in
                 if let error {
                     print("Error scheduling notification: \(error.localizedDescription)")
