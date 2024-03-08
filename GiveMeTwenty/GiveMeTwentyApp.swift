@@ -38,7 +38,7 @@ struct GiveMeTwentyApp: App {
         Window("Give Me Twenty", id: "CoverViewWindow", content: {
             CoverView()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(VisualEffectView().ignoresSafeArea())
+                .background(BlurEffectView().ignoresSafeArea())
         }).windowStyle(.hiddenTitleBar) // hiding title bar itself
             
         #endif

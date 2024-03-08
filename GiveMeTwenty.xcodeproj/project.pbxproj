@@ -14,6 +14,7 @@
 		22668B212B94BE76009B1516 /* SettingsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22668B202B94BE76009B1516 /* SettingsKeys.swift */; };
 		22668B232B9A56AF009B1516 /* WindowAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22668B222B9A56AE009B1516 /* WindowAccessor.swift */; };
 		22668B252B9A56EC009B1516 /* CoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22668B242B9A56EC009B1516 /* CoverView.swift */; };
+		22668B272B9B69E0009B1516 /* BlurEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22668B262B9B69E0009B1516 /* BlurEffectView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		22668B202B94BE76009B1516 /* SettingsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsKeys.swift; sourceTree = "<group>"; };
 		22668B222B9A56AE009B1516 /* WindowAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowAccessor.swift; sourceTree = "<group>"; };
 		22668B242B9A56EC009B1516 /* CoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverView.swift; sourceTree = "<group>"; };
+		22668B262B9B69E0009B1516 /* BlurEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurEffectView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			children = (
 				225570A92B89179600DB8618 /* ConfigurationView.swift */,
 				22668B242B9A56EC009B1516 /* CoverView.swift */,
+				22668B262B9B69E0009B1516 /* BlurEffectView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 			files = (
 				225570AA2B89179600DB8618 /* ConfigurationView.swift in Sources */,
 				22668B252B9A56EC009B1516 /* CoverView.swift in Sources */,
+				22668B272B9B69E0009B1516 /* BlurEffectView.swift in Sources */,
 				225570A82B89179600DB8618 /* GiveMeTwentyApp.swift in Sources */,
 				22668B232B9A56AF009B1516 /* WindowAccessor.swift in Sources */,
 				22668B212B94BE76009B1516 /* SettingsKeys.swift in Sources */,
