@@ -21,6 +21,9 @@ struct GiveMeTwentyApp: App {
     @State var window: NSWindow?
     @AppStorage("showCoverView") private var showCoverView: Bool = true
     #endif
+    
+    // Accessing App Delegate
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     
     var body: some Scene {
@@ -36,12 +39,22 @@ struct GiveMeTwentyApp: App {
             CoverView()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(VisualEffectView().ignoresSafeArea())
-                .onAppear(perform: {
-                    window?.titleVisibility = .hidden
-                    window?.styleMask.remove(.titled)
-                })
-        }).windowStyle(.hiddenTitleBar)
+        }).windowStyle(.hiddenTitleBar) // hiding title bar itself
             
         #endif
+    }
+}
+
+
+class AppDelegate: NSObject, NSApplicationDelegate {
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        hideTitleBarButtons()
+    }
+
+    func hideTitleBarButtons() {
+        guard let window = NSApplication.shared.windows.first else { assertionFailure(); return }
+        window.standardWindowButton(.closeButton)?.isHidden = true
+        window.standardWindowButton(.miniaturizeButton)?.isHidden = true
+        window.standardWindowButton(.zoomButton)?.isHidden = true
     }
 }

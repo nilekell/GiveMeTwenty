@@ -12,6 +12,8 @@
 		225570AC2B89179700DB8618 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 225570AB2B89179700DB8618 /* Assets.xcassets */; };
 		225570AF2B89179700DB8618 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 225570AE2B89179700DB8618 /* Preview Assets.xcassets */; };
 		22668B212B94BE76009B1516 /* SettingsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22668B202B94BE76009B1516 /* SettingsKeys.swift */; };
+		22668B232B9A56AF009B1516 /* WindowAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22668B222B9A56AE009B1516 /* WindowAccessor.swift */; };
+		22668B252B9A56EC009B1516 /* CoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22668B242B9A56EC009B1516 /* CoverView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		225570AE2B89179700DB8618 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		225570B02B89179700DB8618 /* GiveMeTwenty.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GiveMeTwenty.entitlements; sourceTree = "<group>"; };
 		22668B202B94BE76009B1516 /* SettingsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsKeys.swift; sourceTree = "<group>"; };
+		22668B222B9A56AE009B1516 /* WindowAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowAccessor.swift; sourceTree = "<group>"; };
+		22668B242B9A56EC009B1516 /* CoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,7 @@
 				22584EE82B8E8770007392F5 /* Views */,
 				225570A72B89179600DB8618 /* GiveMeTwentyApp.swift */,
 				22668B202B94BE76009B1516 /* SettingsKeys.swift */,
+				22668B222B9A56AE009B1516 /* WindowAccessor.swift */,
 				225570AB2B89179700DB8618 /* Assets.xcassets */,
 				225570B02B89179700DB8618 /* GiveMeTwenty.entitlements */,
 				225570AD2B89179700DB8618 /* Preview Content */,
@@ -76,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				225570A92B89179600DB8618 /* ConfigurationView.swift */,
+				22668B242B9A56EC009B1516 /* CoverView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -151,7 +157,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				225570AA2B89179600DB8618 /* ConfigurationView.swift in Sources */,
+				22668B252B9A56EC009B1516 /* CoverView.swift in Sources */,
 				225570A82B89179600DB8618 /* GiveMeTwentyApp.swift in Sources */,
+				22668B232B9A56AF009B1516 /* WindowAccessor.swift in Sources */,
 				22668B212B94BE76009B1516 /* SettingsKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
