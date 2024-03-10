@@ -14,7 +14,7 @@
 		22668B212B94BE76009B1516 /* SettingsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22668B202B94BE76009B1516 /* SettingsKeys.swift */; };
 		22668B252B9A56EC009B1516 /* CoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22668B242B9A56EC009B1516 /* CoverView.swift */; };
 		22668B272B9B69E0009B1516 /* BlurEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22668B262B9B69E0009B1516 /* BlurEffectView.swift */; };
-		22D9FB3C2B9B79E20014F132 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 22D9FB3B2B9B79E20014F132 /* LaunchAtLogin */; };
+		228212AB2B9E420700DDE6D1 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 228212AA2B9E420700DDE6D1 /* LaunchAtLogin */; };
 		22D9FB3E2B9E03760014F132 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9FB3D2B9E03760014F132 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22D9FB3C2B9B79E20014F132 /* LaunchAtLogin in Frameworks */,
+				228212AB2B9E420700DDE6D1 /* LaunchAtLogin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,7 +108,7 @@
 			);
 			name = GiveMeTwenty;
 			packageProductDependencies = (
-				22D9FB3B2B9B79E20014F132 /* LaunchAtLogin */,
+				228212AA2B9E420700DDE6D1 /* LaunchAtLogin */,
 			);
 			productName = GiveMeTwenty;
 			productReference = 225570A42B89179600DB8618 /* GiveMeTwenty.app */;
@@ -139,7 +139,7 @@
 			);
 			mainGroup = 2255709B2B89179600DB8618;
 			packageReferences = (
-				22D9FB3A2B9B79E20014F132 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
+				228212A92B9E420700DDE6D1 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
 			);
 			productRefGroup = 225570A52B89179600DB8618 /* Products */;
 			projectDirPath = "";
@@ -383,7 +383,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		22D9FB3A2B9B79E20014F132 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */ = {
+		228212A92B9E420700DDE6D1 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin-Modern";
 			requirement = {
@@ -394,9 +394,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		22D9FB3B2B9B79E20014F132 /* LaunchAtLogin */ = {
+		228212AA2B9E420700DDE6D1 /* LaunchAtLogin */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 22D9FB3A2B9B79E20014F132 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */;
+			package = 228212A92B9E420700DDE6D1 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */;
 			productName = LaunchAtLogin;
 		};
 /* End XCSwiftPackageProductDependency section */
