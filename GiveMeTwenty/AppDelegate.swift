@@ -41,12 +41,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     }
     
     @objc func timerAction() {
+        // whenever timer triggers, show the cover window
         if let window = self.coverWindow {
-            if window.isVisible {
-                window.orderOut(nil)
-            } else {
-                window.makeKeyAndOrderFront(nil)
-            }
+            window.makeKeyAndOrderFront(nil)
         }
     }
     
