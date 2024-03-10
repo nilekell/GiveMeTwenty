@@ -25,6 +25,14 @@ struct CoverView: View {
                 Label("Close", systemImage: "arrow.up")
             }
         }
+        // adding focusable() enables onKeyPress to work
+        .focusable()
+        // removing blue outline
+        .focusEffectDisabled()
+        .onKeyPress(keys: [.escape, .space, .return]) { press in
+            closeScreen()
+            return .handled
+        }
         .onAppear(perform: {
             // automatically closing screen after 60s
             DispatchQueue.main.asyncAfter(deadline: .now() + coverViewDuration) {
