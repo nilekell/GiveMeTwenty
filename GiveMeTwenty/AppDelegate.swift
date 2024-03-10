@@ -13,9 +13,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         setupTimer()
-        findCoverWindow()
-        hideCoverWindow()
         configureCoverWindow()
+        hideCoverWindow()
     }
     
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
@@ -48,10 +47,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         }
     }
     
-    func findCoverWindow() {
-        coverWindow = NSApplication.shared.windows.first(where: { $0.title == "CoverView" })
-    }
-    
     func hideCoverWindow() {
         if let window = self.coverWindow {
             window.orderOut(nil)
@@ -59,8 +54,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     }
     
     func configureCoverWindow() {
+        coverWindow = NSApplication.shared.windows.first(where: { $0.title == "CoverView" })
         coverWindow?.standardWindowButton(.closeButton)?.isHidden = true
         coverWindow?.standardWindowButton(.miniaturizeButton)?.isHidden = true
         coverWindow?.standardWindowButton(.zoomButton)?.isHidden = true
+        coverWindow?.level = .popUpMenu
     }
 }
