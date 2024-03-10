@@ -32,7 +32,7 @@ struct CoverView: View {
     }
     
     func closeScreen() {
-        appDelegate.coverWindow?.orderOut(nil)
+        appDelegate.hideCoverWindow()
     }
 }
 
