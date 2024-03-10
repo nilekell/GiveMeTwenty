@@ -15,6 +15,9 @@ struct CoverView: View {
     
     @AppStorage(SettingsKeys.coverViewDuration) var coverViewDuration: Double = 60.0
     
+    @AppStorage(SettingsKeys.selectedSound) var selectedSound: String = NSSound.Sound.basso.rawValue // Default sound
+
+    
     var body: some View {
         VStack {
             Text(popUpMenuMessage)
@@ -34,6 +37,7 @@ struct CoverView: View {
             return .handled
         }
         .onAppear(perform: {
+            print("CoverView will show for \(coverViewDuration) seconds")
             // automatically closing screen after 60s
             DispatchQueue.main.asyncAfter(deadline: .now() + coverViewDuration) {
                 closeScreen()
@@ -42,6 +46,9 @@ struct CoverView: View {
     }
     
     func closeScreen() {
+        if let selectedSoundEnum = NSSound.Sound(rawValue: selectedSound) {
+            NSSound.play(selectedSoundEnum)
+        }
         appDelegate.hideCoverWindow()
     }
 }
