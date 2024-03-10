@@ -14,6 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     func applicationDidFinishLaunching(_ notification: Notification) {
         setupTimer()
         findCoverWindow()
+        hideCoverWindow()
         hideTitleBarButtons()
     }
     
@@ -49,6 +50,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     
     func findCoverWindow() {
         coverWindow = NSApplication.shared.windows.first(where: { $0.title == "CoverView" })
+        coverWindow?.level = .popUpMenu
+    }
+    
+    func hideCoverWindow() {
+        if let window = self.coverWindow {
+            window.orderOut(nil)
+        }
     }
     
     func hideTitleBarButtons() {
