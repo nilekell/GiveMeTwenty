@@ -71,6 +71,7 @@ struct ConfigurationView: View {
                 .textFieldStyle(.roundedBorder)
                 .frame(width: 150)
                 .clipped()
+                .focusEffectDisabled()
                 .padding(.horizontal)
                 .padding(.bottom)
                 .padding(.bottom)
