@@ -18,11 +18,9 @@ struct GiveMeTwentyApp: App {
     // not meant to be changed
     @AppStorage(SettingsKeys.showAppInMenuBar) private var showAppInMenuBar: Bool = true
     
-    @AppStorage("showCoverView") private var showCoverView: Bool = true
-    
     // Accessing App Delegate
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-
+    
     
     var body: some Scene {
         MenuBarExtra(isInserted: $showAppInMenuBar) {
@@ -32,7 +30,7 @@ struct GiveMeTwentyApp: App {
         }
         .menuBarExtraStyle(.window)
         
-        Window("Give Me Twenty", id: "CoverViewWindow", content: {
+        Window("CoverView", id: "CoverViewWindow", content: {
             CoverView()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(BlurEffectView().ignoresSafeArea())
@@ -42,15 +40,39 @@ struct GiveMeTwentyApp: App {
 
 
 class AppDelegate: NSObject, NSApplicationDelegate {
+    var timer: Timer?
+    var coverWindow: NSWindow?
+    
     func applicationDidFinishLaunching(_ notification: Notification) {
+        setupTimer()
+        findCoverWindow()
         hideTitleBarButtons()
     }
-
+    
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        return false
+    }
+    
+    func setupTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
+            if let window = self.coverWindow {
+                if window.isVisible {
+                    window.orderOut(nil)
+                } else {
+                    window.makeKeyAndOrderFront(nil)
+                }
+            }
+        }
+    }
+    
+    func findCoverWindow() {
+        coverWindow = NSApplication.shared.windows.first(where: { $0.title == "CoverView" })
+    }
+    
     func hideTitleBarButtons() {
-        guard let window = NSApplication.shared.windows.first else { assertionFailure(); return }
-        window.standardWindowButton(.closeButton)?.isHidden = true
-        window.standardWindowButton(.miniaturizeButton)?.isHidden = true
-        window.standardWindowButton(.zoomButton)?.isHidden = true
+        coverWindow?.standardWindowButton(.closeButton)?.isHidden = true
+        coverWindow?.standardWindowButton(.miniaturizeButton)?.isHidden = true
+        coverWindow?.standardWindowButton(.zoomButton)?.isHidden = true
     }
 }
 #endif
