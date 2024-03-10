@@ -20,6 +20,7 @@ struct GiveMeTwentyApp: App {
     var body: some Scene {
         MenuBarExtra(isInserted: $showAppInMenuBar) {
             ConfigurationView()
+                .environmentObject(appDelegate)
         } label: {
             Label("GiveMeTwenty", systemImage: "star")
         }
@@ -29,6 +30,7 @@ struct GiveMeTwentyApp: App {
             CoverView()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(BlurEffectView().ignoresSafeArea())
+                .environmentObject(appDelegate)
         }).windowStyle(.hiddenTitleBar) // hiding title bar itself
     }
 }
