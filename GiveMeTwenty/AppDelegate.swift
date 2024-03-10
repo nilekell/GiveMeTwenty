@@ -15,7 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         setupTimer()
         findCoverWindow()
         hideCoverWindow()
-        hideTitleBarButtons()
+        configureCoverWindow()
     }
     
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
@@ -50,7 +50,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     
     func findCoverWindow() {
         coverWindow = NSApplication.shared.windows.first(where: { $0.title == "CoverView" })
-        coverWindow?.level = .popUpMenu
     }
     
     func hideCoverWindow() {
@@ -59,7 +58,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         }
     }
     
-    func hideTitleBarButtons() {
+    func configureCoverWindow() {
         coverWindow?.standardWindowButton(.closeButton)?.isHidden = true
         coverWindow?.standardWindowButton(.miniaturizeButton)?.isHidden = true
         coverWindow?.standardWindowButton(.zoomButton)?.isHidden = true
