@@ -16,6 +16,7 @@
 		22668B272B9B69E0009B1516 /* BlurEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22668B262B9B69E0009B1516 /* BlurEffectView.swift */; };
 		228212AB2B9E420700DDE6D1 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 228212AA2B9E420700DDE6D1 /* LaunchAtLogin */; };
 		22D9FB3E2B9E03760014F132 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9FB3D2B9E03760014F132 /* AppDelegate.swift */; };
+		22DB49CB2B9E5A6D00559C1F /* NSSoundExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DB49CA2B9E5A6D00559C1F /* NSSoundExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		22668B242B9A56EC009B1516 /* CoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverView.swift; sourceTree = "<group>"; };
 		22668B262B9B69E0009B1516 /* BlurEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurEffectView.swift; sourceTree = "<group>"; };
 		22D9FB3D2B9E03760014F132 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		22DB49CA2B9E5A6D00559C1F /* NSSoundExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSSoundExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				225570A72B89179600DB8618 /* GiveMeTwentyApp.swift */,
 				22D9FB3D2B9E03760014F132 /* AppDelegate.swift */,
 				22668B202B94BE76009B1516 /* SettingsKeys.swift */,
+				22DB49CA2B9E5A6D00559C1F /* NSSoundExtension.swift */,
 				225570AB2B89179700DB8618 /* Assets.xcassets */,
 				225570B02B89179700DB8618 /* GiveMeTwenty.entitlements */,
 				225570AD2B89179700DB8618 /* Preview Content */,
@@ -170,6 +173,7 @@
 				22D9FB3E2B9E03760014F132 /* AppDelegate.swift in Sources */,
 				225570AA2B89179600DB8618 /* ConfigurationView.swift in Sources */,
 				22668B252B9A56EC009B1516 /* CoverView.swift in Sources */,
+				22DB49CB2B9E5A6D00559C1F /* NSSoundExtension.swift in Sources */,
 				22668B272B9B69E0009B1516 /* BlurEffectView.swift in Sources */,
 				225570A82B89179600DB8618 /* GiveMeTwentyApp.swift in Sources */,
 				22668B212B94BE76009B1516 /* SettingsKeys.swift in Sources */,
