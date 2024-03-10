@@ -10,6 +10,9 @@ import UserNotifications
 import LaunchAtLogin
 
 struct ConfigurationView: View {
+    
+    @EnvironmentObject private var appDelegate: AppDelegate
+    
     // Configure app to send reminders every x hours
     @AppStorage(SettingsKeys.reminderFrequency) var reminderFrequency: Int = 2
     
@@ -35,6 +38,7 @@ struct ConfigurationView: View {
                 .frame(width: 80)
                 .clipped()
                 .onChange(of: reminderFrequency) { oldValue, newValue in
+                    updateTimerConfig(newValue)
                     updateNotificationConfig(notificationsEnabled, popUpMenuMessage, newValue)
                 }
                 
@@ -145,6 +149,10 @@ struct ConfigurationView: View {
             center.removeAllPendingNotificationRequests()
             print("disabled notifications")
         }
+    }
+    
+    func updateTimerConfig(_ reminderFrequency: Int) {
+        appDelegate.setupTimer(reminderFrequency)
     }
 }
 
