@@ -14,4 +14,5 @@ enum SettingsKeys {
     static let showTimerInMenuBar = "showAppInMenuBar"
     static let popUpMenuMessage = "popUpMenuMessage"
     static let notificationsEnabled = "notificationsEnabled"
+    static let coverViewDuration = "coverViewDuration"
 }
