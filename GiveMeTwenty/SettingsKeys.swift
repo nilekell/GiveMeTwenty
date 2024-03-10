@@ -15,4 +15,5 @@ enum SettingsKeys {
     static let popUpMenuMessage = "popUpMenuMessage"
     static let notificationsEnabled = "notificationsEnabled"
     static let coverViewDuration = "coverViewDuration"
+    static let selectedSound = "selectedSound"
 }
