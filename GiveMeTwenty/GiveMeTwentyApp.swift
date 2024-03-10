@@ -17,7 +17,6 @@ struct GiveMeTwentyApp: App {
     // Accessing App Delegate
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
-    
     var body: some Scene {
         MenuBarExtra(isInserted: $showAppInMenuBar) {
             ConfigurationView()

@@ -25,7 +25,6 @@ struct CoverView: View {
         }
     }
     
-    
     func closeScreen() {
         appDelegate.timer?.fire()
     }
