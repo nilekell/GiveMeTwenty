@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CoverView: View {
     
+    @EnvironmentObject private var appDelegate: AppDelegate
+    
     @AppStorage(SettingsKeys.popUpMenuMessage) var popUpMenuMessage: String = "Time to give me twenty!"
     
     var body: some View {
