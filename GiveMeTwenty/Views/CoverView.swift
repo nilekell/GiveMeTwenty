@@ -27,7 +27,7 @@ struct CoverView: View {
     
     
     func closeScreen() {
-        NSApplication.shared.hide(self)
+        appDelegate.timer?.fire()
     }
 }
 
