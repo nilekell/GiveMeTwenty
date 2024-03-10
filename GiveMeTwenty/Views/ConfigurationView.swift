@@ -25,6 +25,11 @@ struct ConfigurationView: View {
     // Configure message to show on popUp Menu & Notification
     @AppStorage(SettingsKeys.popUpMenuMessage) var popUpMenuMessage: String = "Time to give me twenty!"
     
+    // Configure duration in seconds for CoverView to be displayed before automatically closing
+    @AppStorage(SettingsKeys.coverViewDuration) var coverViewDuration: Double = 60.0
+    
+    @State private var isEditing = false
+    
     private let reminderFrequencyOptions = [1, 2, 3, 4, 5, 6, 7, 8]
     
     var body: some View {
