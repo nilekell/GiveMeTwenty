@@ -23,10 +23,16 @@ struct CoverView: View {
                 Label("Close", systemImage: "arrow.up")
             }
         }
+        .onAppear(perform: {
+            // automatically closing screen after 60s
+            DispatchQueue.main.asyncAfter(deadline: .now() + 60) {
+                closeScreen()
+            }
+        })
     }
     
     func closeScreen() {
-        appDelegate.timer?.fire()
+        appDelegate.coverWindow?.orderOut(nil)
     }
 }
 
