@@ -38,7 +38,7 @@ struct ConfigurationView: View {
                 .frame(width: 80)
                 .clipped()
                 .onChange(of: reminderFrequency) { oldValue, newValue in
-                    updateTimerConfig(newValue)
+                    updateTimerConfig()
                     updateNotificationConfig(notificationsEnabled, popUpMenuMessage, newValue)
                 }
                 
@@ -151,8 +151,8 @@ struct ConfigurationView: View {
         }
     }
     
-    func updateTimerConfig(_ reminderFrequency: Int) {
-        appDelegate.setupTimer(reminderFrequency)
+    func updateTimerConfig() {
+        appDelegate.setupTimer()
     }
 }
 

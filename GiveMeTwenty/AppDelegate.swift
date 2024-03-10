@@ -11,6 +11,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     var timer: Timer?
     var coverWindow: NSWindow?
     
+    @AppStorage(SettingsKeys.reminderFrequency) var reminderFrequency: Int = 2
+    
     func applicationDidFinishLaunching(_ notification: Notification) {
         setupTimer()
         configureCoverWindow()
@@ -21,7 +23,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         return false
     }
     
-    func setupTimer(_ reminderFrequency: Int = 2) {
+    func setupTimer() {
         // Cancel any existing timer before setting up a new one to avoid having multiple timers active simultaneously.
         if timer?.isValid != nil && timer?.isValid == true {
             timer?.invalidate()
