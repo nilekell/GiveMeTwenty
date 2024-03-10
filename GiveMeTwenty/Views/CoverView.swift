@@ -13,6 +13,8 @@ struct CoverView: View {
     
     @AppStorage(SettingsKeys.popUpMenuMessage) var popUpMenuMessage: String = "Time to give me twenty!"
     
+    @AppStorage(SettingsKeys.coverViewDuration) var coverViewDuration: Double = 60.0
+    
     var body: some View {
         VStack {
             Text(popUpMenuMessage)
@@ -25,7 +27,7 @@ struct CoverView: View {
         }
         .onAppear(perform: {
             // automatically closing screen after 60s
-            DispatchQueue.main.asyncAfter(deadline: .now() + 60) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + coverViewDuration) {
                 closeScreen()
             }
         })

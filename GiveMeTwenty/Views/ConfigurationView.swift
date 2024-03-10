@@ -68,9 +68,32 @@ struct ConfigurationView: View {
                 .clipped()
                 .padding(.horizontal)
                 .padding(.bottom)
+                .padding(.bottom)
                 .onChange(of: popUpMenuMessage) { oldValue, newValue in
                     updateNotificationConfig(notificationsEnabled, newValue, reminderFrequency)
                 }
+            
+            HStack (spacing: 0) {
+                Text("Show cover screen for ")
+                
+                Text("\(Int(coverViewDuration))")
+                    .foregroundColor(isEditing ? .red : .blue)
+                
+                Text("seconds.")
+                    .padding(EdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 0))
+            }
+            .padding(.horizontal)
+            
+            Slider(
+                value: $coverViewDuration,
+                in: 0...300,
+                onEditingChanged: { editing in
+                    isEditing = editing
+                }
+            )
+            .frame(maxWidth: 250)
+            .padding(.horizontal)
+            .padding(.bottom)
             
             Toggle(isOn: $showTimerInMenuBar) {
                 Text("Show timer in menu bar")
@@ -89,7 +112,7 @@ struct ConfigurationView: View {
             .padding()
             
         }
-        .frame(minWidth: 400, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity, alignment: .topLeading)
+        .frame(minWidth: 500, maxWidth: .infinity, minHeight: 500, maxHeight: .infinity, alignment: .topLeading)
         .padding()
     }
     
