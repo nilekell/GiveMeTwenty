@@ -28,9 +28,14 @@ struct ConfigurationView: View {
     // Configure duration in seconds for CoverView to be displayed before automatically closing
     @AppStorage(SettingsKeys.coverViewDuration) var coverViewDuration: Double = 60.0
     
+    // Configure sound to play when CoverView closes itself
+    @AppStorage(SettingsKeys.selectedSound) var selectedSound: String = NSSound.Sound.basso.rawValue
+    
     @State private var isEditing = false
     
     private let reminderFrequencyOptions = [1, 2, 3, 4, 5, 6, 7, 8]
+    
+    private let systemSounds = NSSound.Sound.allCases
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -100,6 +105,23 @@ struct ConfigurationView: View {
             .frame(maxWidth: 250)
             .padding(.horizontal)
             .padding(.bottom)
+            
+            HStack {
+                Picker("Select sound:", selection: $selectedSound) {
+                    ForEach(systemSounds, id: \.self) { sound in
+                        Text(sound.rawValue).tag(sound.rawValue)
+                    }
+                }
+                .frame(width: 200)
+                .onChange(of: selectedSound) { oldValue, newValue in
+                    playSelectedSound()
+                }
+                
+                Button(action: playSelectedSound) {
+                    Image(systemName: "speaker.wave.2.fill").accessibilityLabel("Play selected sound")
+                }
+            }
+            .padding()
             
             Toggle(isOn: $showTimerInMenuBar) {
                 Text("Show timer in menu bar")
@@ -182,6 +204,12 @@ struct ConfigurationView: View {
     
     func updateTimerConfig() {
         appDelegate.setupTimer()
+    }
+    
+    func playSelectedSound() {
+        if let selectedSoundEnum = NSSound.Sound(rawValue: selectedSound) {
+            NSSound.play(selectedSoundEnum)
+        }
     }
 }
 
