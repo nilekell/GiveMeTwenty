@@ -15,6 +15,7 @@
 		22668B252B9A56EC009B1516 /* CoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22668B242B9A56EC009B1516 /* CoverView.swift */; };
 		22668B272B9B69E0009B1516 /* BlurEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22668B262B9B69E0009B1516 /* BlurEffectView.swift */; };
 		22D9FB3C2B9B79E20014F132 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 22D9FB3B2B9B79E20014F132 /* LaunchAtLogin */; };
+		22D9FB3E2B9E03760014F132 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9FB3D2B9E03760014F132 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		22668B202B94BE76009B1516 /* SettingsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsKeys.swift; sourceTree = "<group>"; };
 		22668B242B9A56EC009B1516 /* CoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverView.swift; sourceTree = "<group>"; };
 		22668B262B9B69E0009B1516 /* BlurEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurEffectView.swift; sourceTree = "<group>"; };
+		22D9FB3D2B9E03760014F132 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				22584EE82B8E8770007392F5 /* Views */,
 				225570A72B89179600DB8618 /* GiveMeTwentyApp.swift */,
+				22D9FB3D2B9E03760014F132 /* AppDelegate.swift */,
 				22668B202B94BE76009B1516 /* SettingsKeys.swift */,
 				225570AB2B89179700DB8618 /* Assets.xcassets */,
 				225570B02B89179700DB8618 /* GiveMeTwenty.entitlements */,
@@ -164,6 +167,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22D9FB3E2B9E03760014F132 /* AppDelegate.swift in Sources */,
 				225570AA2B89179600DB8618 /* ConfigurationView.swift in Sources */,
 				22668B252B9A56EC009B1516 /* CoverView.swift in Sources */,
 				22668B272B9B69E0009B1516 /* BlurEffectView.swift in Sources */,
