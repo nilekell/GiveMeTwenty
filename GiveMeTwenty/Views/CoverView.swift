@@ -12,11 +12,8 @@ struct CoverView: View {
     @EnvironmentObject private var appDelegate: AppDelegate
     
     @AppStorage(SettingsKeys.popUpMenuMessage) var popUpMenuMessage: String = "Time to give me twenty!"
-    
     @AppStorage(SettingsKeys.coverViewDuration) var coverViewDuration: Double = 60.0
-    
-    @AppStorage(SettingsKeys.selectedSound) var selectedSound: String = NSSound.Sound.basso.rawValue // Default sound
-
+    @AppStorage(SettingsKeys.selectedSound) var selectedSound: String = NSSound.Sound.basso.rawValue
     
     var body: some View {
         VStack {
@@ -36,15 +33,6 @@ struct CoverView: View {
             closeScreen()
             return .handled
         }
-        .onAppear(perform: {
-            // automatically closing screen after coverViewDuration
-            DispatchQueue.main.asyncAfter(deadline: .now() + coverViewDuration) {
-                if let selectedSoundEnum = NSSound.Sound(rawValue: selectedSound) {
-                    NSSound.play(selectedSoundEnum)
-                }
-                closeScreen()
-            }
-        })
     }
     
     func closeScreen() {
