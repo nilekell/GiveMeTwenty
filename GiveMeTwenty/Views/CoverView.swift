@@ -37,18 +37,17 @@ struct CoverView: View {
             return .handled
         }
         .onAppear(perform: {
-            print("CoverView will show for \(coverViewDuration) seconds")
-            // automatically closing screen after 60s
+            // automatically closing screen after coverViewDuration
             DispatchQueue.main.asyncAfter(deadline: .now() + coverViewDuration) {
+                if let selectedSoundEnum = NSSound.Sound(rawValue: selectedSound) {
+                    NSSound.play(selectedSoundEnum)
+                }
                 closeScreen()
             }
         })
     }
     
     func closeScreen() {
-        if let selectedSoundEnum = NSSound.Sound(rawValue: selectedSound) {
-            NSSound.play(selectedSoundEnum)
-        }
         appDelegate.hideCoverWindow()
     }
 }
