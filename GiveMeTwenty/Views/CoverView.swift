@@ -12,8 +12,6 @@ struct CoverView: View {
     @EnvironmentObject private var appDelegate: AppDelegate
     
     @AppStorage(SettingsKeys.popUpMenuMessage) var popUpMenuMessage: String = "Time to give me twenty!"
-    @AppStorage(SettingsKeys.coverViewDuration) var coverViewDuration: Double = 60.0
-    @AppStorage(SettingsKeys.selectedSound) var selectedSound: String = NSSound.Sound.basso.rawValue
     
     var body: some View {
         VStack {
