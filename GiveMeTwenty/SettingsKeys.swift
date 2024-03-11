@@ -11,7 +11,7 @@ enum SettingsKeys {
     static let reminderFrequency = "reminderFrequency"
     static let runWhenComputerStarts = "runWhenComputerStarts"
     static let showAppInMenuBar = "showAppInMenuBar"
-    static let showTimerInMenuBar = "showAppInMenuBar"
+    static let showTimerInMenuBar = "showTimerInMenuBar"
     static let popUpMenuMessage = "popUpMenuMessage"
     static let notificationsEnabled = "notificationsEnabled"
     static let coverViewDuration = "coverViewDuration"
