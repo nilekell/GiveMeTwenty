@@ -13,6 +13,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     
     @AppStorage(SettingsKeys.reminderFrequency) var reminderFrequency: Int = 2
     @AppStorage(SettingsKeys.isFirstAppOpen) var isFirstAppOpen: Bool = true
+    @AppStorage(SettingsKeys.coverViewDuration) var coverViewDuration: Double = 60.0
+    @AppStorage(SettingsKeys.selectedSound) var selectedSound: String = NSSound.Sound.basso.rawValue
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         setDefaultSettingsValues()
@@ -67,13 +69,28 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     @objc func timerAction() {
         // whenever timer triggers, show the cover window
         if let window = self.coverWindow {
+            if window.isKeyWindow {
+                // do not make window key, active, main, or at the front, if it already is being displayed
+                // NOTE: if user clicks on another application, then isKeyWindow will be false
+                return
+            }
+            
             window.makeKeyAndOrderFront(nil)
+            print("CoverView presented for: \(coverViewDuration)")
+            // automatically closing screen after coverViewDuration
+            DispatchQueue.main.asyncAfter(deadline: .now() + coverViewDuration) {
+                if let selectedSoundEnum = NSSound.Sound(rawValue: self.selectedSound) {
+                    NSSound.play(selectedSoundEnum)
+                }
+                self.hideCoverWindow()
+                print("closed CoverView after: \(self.coverViewDuration)")
+            }
         }
     }
     
     func hideCoverWindow() {
         if let window = self.coverWindow {
-            window.orderOut(nil)
+            window.close()
         }
     }
     
