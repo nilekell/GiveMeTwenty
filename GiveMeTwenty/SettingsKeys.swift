@@ -8,6 +8,7 @@
 import Foundation
 
 enum SettingsKeys {
+    static let isFirstAppOpen = "isFirstAppOpen"
     static let reminderFrequency = "reminderFrequency"
     static let runWhenComputerStarts = "runWhenComputerStarts"
     static let showAppInMenuBar = "showAppInMenuBar"
