@@ -71,11 +71,15 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         if let window = self.coverWindow {
             if window.isKeyWindow {
                 // do not make window key, active, main, or at the front, if it already is being displayed
-                // NOTE: if user clicks on another application, then isKeyWindow will be false
+                // NOTE: if user clicks on another application or window, then isKeyWindow will be false
                 return
             }
             
+            // bring window to front
             window.makeKeyAndOrderFront(nil)
+            // focus window (allows window to be interacted with, without having to click on it first)
+            NSApplication.shared.activate(ignoringOtherApps: true)
+            
             print("CoverView presented for: \(coverViewDuration)")
             // automatically closing screen after coverViewDuration
             DispatchQueue.main.asyncAfter(deadline: .now() + coverViewDuration) {
