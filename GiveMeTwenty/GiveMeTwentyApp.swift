@@ -32,10 +32,13 @@ struct GiveMeTwentyApp: App {
         .menuBarExtraStyle(.window)
         
         Window("CoverView", id: "CoverViewWindow", content: {
-            CoverView()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(BlurEffectView().ignoresSafeArea())
-                .environmentObject(appDelegate)
+            GeometryReader { geometry in
+                CoverView()
+                    .frame(minWidth: geometry.size.width, minHeight: geometry.size.height)
+                    .background(BlurEffectView().ignoresSafeArea())
+                    .environmentObject(appDelegate)
+            }
+            
         }).windowStyle(.hiddenTitleBar) // hiding title bar itself
     }
 }

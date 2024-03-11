@@ -103,6 +103,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         coverWindow?.standardWindowButton(.closeButton)?.isHidden = true
         coverWindow?.standardWindowButton(.miniaturizeButton)?.isHidden = true
         coverWindow?.standardWindowButton(.zoomButton)?.isHidden = true
-        coverWindow?.level = .popUpMenu
+        coverWindow?.level = .floating
     }
 }
