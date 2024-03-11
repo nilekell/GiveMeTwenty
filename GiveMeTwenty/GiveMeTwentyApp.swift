@@ -11,11 +11,16 @@ import SwiftUI
 @main
 struct GiveMeTwentyApp: App {
     
-    // not meant to be changed
+    // not meant to be changed after initialisation
     @AppStorage(SettingsKeys.showAppInMenuBar) private var showAppInMenuBar: Bool = true
     
     // Accessing App Delegate
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
+    init() {
+        // ensuring that showAppInMenuBar is always true
+        UserDefaults.standard.setValue(true, forKey: SettingsKeys.showAppInMenuBar)
+    }
     
     var body: some Scene {
         MenuBarExtra(isInserted: $showAppInMenuBar) {
