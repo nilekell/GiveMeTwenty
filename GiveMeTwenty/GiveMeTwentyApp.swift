@@ -27,7 +27,7 @@ struct GiveMeTwentyApp: App {
             ConfigurationView()
                 .environmentObject(appDelegate)
         } label: {
-            Label("GiveMeTwenty", systemImage: "star")
+            Label("GiveMeTwenty", systemImage: "20.circle.fill")
         }
         .menuBarExtraStyle(.window)
         
