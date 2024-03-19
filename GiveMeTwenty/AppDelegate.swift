@@ -53,8 +53,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
             timer?.invalidate()
         }
         
-        print("setupTimer: \(reminderFrequency)")
         let reminderFrequencyInSeconds = reminderFrequency * 60 * 60
+        // let reminderFrequencyInSeconds = 5
         
         timer = Timer(timeInterval: TimeInterval(reminderFrequencyInSeconds), target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
         
@@ -80,6 +80,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
             // focus window (allows window to be interacted with, without having to click on it first)
             NSApplication.shared.activate(ignoringOtherApps: true)
             
+            configureCoverWindow()
+            
             print("CoverView presented for: \(coverViewDuration)")
             // automatically closing screen after coverViewDuration
             DispatchQueue.main.asyncAfter(deadline: .now() + coverViewDuration) {
@@ -103,6 +105,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         coverWindow?.standardWindowButton(.closeButton)?.isHidden = true
         coverWindow?.standardWindowButton(.miniaturizeButton)?.isHidden = true
         coverWindow?.standardWindowButton(.zoomButton)?.isHidden = true
-        coverWindow?.level = .floating
+        coverWindow?.level = .popUpMenu
     }
 }
