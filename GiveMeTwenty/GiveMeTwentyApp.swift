@@ -10,28 +10,16 @@ import SwiftUI
 #if os(macOS)
 @main
 struct GiveMeTwentyApp: App {
-    
-    // not meant to be changed after initialisation
-    @AppStorage(SettingsKeys.showAppInMenuBar) private var showAppInMenuBar: Bool = true
-    
     // Accessing App Delegate
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
-    init() {
-        // ensuring that showAppInMenuBar is always true
-        UserDefaults.standard.setValue(true, forKey: SettingsKeys.showAppInMenuBar)
-    }
-    
     var body: some Scene {
-        MenuBarExtra(isInserted: $showAppInMenuBar) {
-            ConfigurationView()
-                .environmentObject(appDelegate)
-        } label: {
-            Label("GiveMeTwenty", systemImage: "20.circle.fill")
+        MenuBarExtra("GiveMeTwenty", systemImage: "20.circle.fill") {
+            MenuBarView()
         }
-        .menuBarExtraStyle(.window)
+        .menuBarExtraStyle(.menu)
         
-        Window("CoverView", id: "CoverViewWindow", content: {
+        Window("CoverView", id: "cover-view-window", content: {
             GeometryReader { geometry in
                 CoverView()
                     .frame(minWidth: geometry.size.width, minHeight: geometry.size.height)
@@ -40,6 +28,12 @@ struct GiveMeTwentyApp: App {
             }
             
         }).windowStyle(.hiddenTitleBar) // hiding title bar itself
+        
+        Window("ConfigurationView", id: "configuration-view-window", content: {
+            ConfigurationView()
+                .navigationTitle("Customise")
+                .environmentObject(appDelegate)
+        })
     }
 }
 #endif

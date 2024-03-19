@@ -129,14 +129,6 @@ struct ConfigurationView: View {
             
             LaunchAtLogin.Toggle("Run when computer starts")
                 .padding()
-            
-            Button(action: {
-                NSApp.terminate(self)
-            }, label: {
-                Text("Quit GiveMeTwenty")
-            })
-            .padding()
-            
         }
         .frame(minWidth: 500, maxWidth: .infinity, minHeight: 500, maxHeight: .infinity, alignment: .topLeading)
         .padding()

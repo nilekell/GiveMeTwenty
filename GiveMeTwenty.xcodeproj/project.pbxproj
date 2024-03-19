@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22543F502BAA1BD3001C26B2 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22543F4F2BAA1BD3001C26B2 /* MenuBarView.swift */; };
 		225570A82B89179600DB8618 /* GiveMeTwentyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225570A72B89179600DB8618 /* GiveMeTwentyApp.swift */; };
 		225570AA2B89179600DB8618 /* ConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225570A92B89179600DB8618 /* ConfigurationView.swift */; };
 		225570AC2B89179700DB8618 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 225570AB2B89179700DB8618 /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		22543F4F2BAA1BD3001C26B2 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
 		225570A42B89179600DB8618 /* GiveMeTwenty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GiveMeTwenty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		225570A72B89179600DB8618 /* GiveMeTwentyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiveMeTwentyApp.swift; sourceTree = "<group>"; };
 		225570A92B89179600DB8618 /* ConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationView.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				225570A92B89179600DB8618 /* ConfigurationView.swift */,
+				22543F4F2BAA1BD3001C26B2 /* MenuBarView.swift */,
 				22668B242B9A56EC009B1516 /* CoverView.swift */,
 				22668B262B9B69E0009B1516 /* BlurEffectView.swift */,
 			);
@@ -171,6 +174,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22D9FB3E2B9E03760014F132 /* AppDelegate.swift in Sources */,
+				22543F502BAA1BD3001C26B2 /* MenuBarView.swift in Sources */,
 				225570AA2B89179600DB8618 /* ConfigurationView.swift in Sources */,
 				22668B252B9A56EC009B1516 /* CoverView.swift in Sources */,
 				22DB49CB2B9E5A6D00559C1F /* NSSoundExtension.swift in Sources */,

@@ -8,11 +8,47 @@
 import SwiftUI
 
 struct MenuBarView: View {
+    
+    @Environment(\.openWindow) var openWindow
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button("Just did twenty") {
+        }
+
+        Divider()
+
+        Text("Snooze for...")
+
+        Button("30 minutes") {
+        }
+
+        Button("1 hour") {
+        }
+
+        Button("2 hours") {
+        }
+
+        Button("4 hours") {
+        }
+
+        Button("Until tomorrow") {
+        }
+
+        Divider()
+
+        Button("Preferences...") {
+            openWindow(id: "configuration-view-window")
+        }
+
+        Divider()
+
+        Button("Quit GiveMeTwenty") {
+            NSApp.terminate(self)
+        }
     }
 }
 
 #Preview {
     MenuBarView()
+        .frame(width: 150)
 }
