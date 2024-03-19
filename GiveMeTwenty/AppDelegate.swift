@@ -10,6 +10,7 @@ import SwiftUI
 class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     var timer: Timer?
     var coverWindow: NSWindow?
+    var configurationWindow: NSWindow?
     
     @AppStorage(SettingsKeys.reminderFrequency) private var reminderFrequency: Int = 2
     @AppStorage(SettingsKeys.isFirstAppOpen) private var isFirstAppOpen: Bool = true
@@ -18,8 +19,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         setDefaultSettingsValues()
+        
+        setupConfigurationWindow()
+        hideConfigurationWindow()
+        
         setupTimer()
-        configureCoverWindow()
+        
+        setupCoverWindow()
         hideCoverWindow()
     }
     
@@ -80,7 +86,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
             // focus window (allows window to be interacted with, without having to click on it first)
             NSApplication.shared.activate(ignoringOtherApps: true)
             
-            configureCoverWindow()
+            setupCoverWindow()
             
             print("CoverView presented for: \(coverViewDuration)")
             // automatically closing screen after coverViewDuration
@@ -94,17 +100,29 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         }
     }
     
-    func hideCoverWindow() {
-        if let window = self.coverWindow {
+    func setupConfigurationWindow() {
+        configurationWindow = NSApplication.shared.windows.first(where: { $0.title == "ConfigurationView" })
+        configurationWindow?.level = .normal
+        configurationWindow?.isReleasedWhenClosed = false
+    }
+    
+    func hideConfigurationWindow() {
+        if let window = self.configurationWindow {
             window.close()
         }
     }
     
-    func configureCoverWindow() {
+    func setupCoverWindow() {
         coverWindow = NSApplication.shared.windows.first(where: { $0.title == "CoverView" })
         coverWindow?.standardWindowButton(.closeButton)?.isHidden = true
         coverWindow?.standardWindowButton(.miniaturizeButton)?.isHidden = true
         coverWindow?.standardWindowButton(.zoomButton)?.isHidden = true
         coverWindow?.level = .popUpMenu
+    }
+    
+    func hideCoverWindow() {
+        if let window = self.coverWindow {
+            window.close()
+        }
     }
 }

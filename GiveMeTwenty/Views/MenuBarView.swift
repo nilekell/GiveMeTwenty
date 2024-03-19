@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MenuBarView: View {
     
+    @EnvironmentObject private var appDelegate: AppDelegate
+    
     @Environment(\.openWindow) var openWindow
     
     var body: some View {

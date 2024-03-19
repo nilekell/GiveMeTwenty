@@ -16,6 +16,7 @@ struct GiveMeTwentyApp: App {
     var body: some Scene {
         MenuBarExtra("GiveMeTwenty", systemImage: "20.circle.fill") {
             MenuBarView()
+                .environmentObject(appDelegate)
         }
         .menuBarExtraStyle(.menu)
         
