@@ -11,10 +11,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     var timer: Timer?
     var coverWindow: NSWindow?
     
-    @AppStorage(SettingsKeys.reminderFrequency) var reminderFrequency: Int = 2
-    @AppStorage(SettingsKeys.isFirstAppOpen) var isFirstAppOpen: Bool = true
-    @AppStorage(SettingsKeys.coverViewDuration) var coverViewDuration: Double = 60.0
-    @AppStorage(SettingsKeys.selectedSound) var selectedSound: String = NSSound.Sound.basso.rawValue
+    @AppStorage(SettingsKeys.reminderFrequency) private var reminderFrequency: Int = 2
+    @AppStorage(SettingsKeys.isFirstAppOpen) private var isFirstAppOpen: Bool = true
+    @AppStorage(SettingsKeys.coverViewDuration) private var coverViewDuration: Double = 60.0
+    @AppStorage(SettingsKeys.selectedSound) private var selectedSound: String = NSSound.Sound.basso.rawValue
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         setDefaultSettingsValues()

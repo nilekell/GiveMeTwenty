@@ -14,22 +14,22 @@ struct ConfigurationView: View {
     @EnvironmentObject private var appDelegate: AppDelegate
     
     // Configure app to send reminders every x hours
-    @AppStorage(SettingsKeys.reminderFrequency) var reminderFrequency: Int = 2
+    @AppStorage(SettingsKeys.reminderFrequency) private var reminderFrequency: Int = 2
     
     // Configure app to send notifications or not
-    @AppStorage(SettingsKeys.notificationsEnabled) var notificationsEnabled: Bool = false
+    @AppStorage(SettingsKeys.notificationsEnabled) private var notificationsEnabled: Bool = false
     
     // Configure timer to appear in menu bar or not
-    @AppStorage(SettingsKeys.showTimerInMenuBar) var showTimerInMenuBar: Bool = true
+    @AppStorage(SettingsKeys.showTimerInMenuBar) private var showTimerInMenuBar: Bool = true
     
     // Configure message to show on popUp Menu & Notification
-    @AppStorage(SettingsKeys.popUpMenuMessage) var popUpMenuMessage: String = "Time to give me twenty!"
+    @AppStorage(SettingsKeys.popUpMenuMessage) private var popUpMenuMessage: String = "Time to give me twenty!"
     
     // Configure duration in seconds for CoverView to be displayed before automatically closing
-    @AppStorage(SettingsKeys.coverViewDuration) var coverViewDuration: Double = 60.0
+    @AppStorage(SettingsKeys.coverViewDuration) private var coverViewDuration: Double = 60.0
     
     // Configure sound to play when CoverView closes itself
-    @AppStorage(SettingsKeys.selectedSound) var selectedSound: String = NSSound.Sound.basso.rawValue
+    @AppStorage(SettingsKeys.selectedSound) private var selectedSound: String = NSSound.Sound.basso.rawValue
     
     @State private var isEditing = false
     

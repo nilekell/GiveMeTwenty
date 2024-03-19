@@ -11,7 +11,7 @@ struct CoverView: View {
     
     @EnvironmentObject private var appDelegate: AppDelegate
     
-    @AppStorage(SettingsKeys.popUpMenuMessage) var popUpMenuMessage: String = "Time to give me twenty!"
+    @AppStorage(SettingsKeys.popUpMenuMessage) private var popUpMenuMessage: String = "Time to give me twenty!"
     
     var body: some View {
         VStack {
