@@ -102,7 +102,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     
     func setupConfigurationWindow() {
         configurationWindow = NSApplication.shared.windows.first(where: { $0.title == "ConfigurationView" })
-        configurationWindow?.level = .normal
+        configurationWindow?.level = .popUpMenu
         configurationWindow?.isReleasedWhenClosed = false
     }
     
