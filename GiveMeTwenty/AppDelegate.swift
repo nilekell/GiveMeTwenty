@@ -163,11 +163,3 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         }
     }
 }
-
-enum SnoozePeriod {
-    case thirty
-    case one
-    case two
-    case four
-    case untilTomorrow
-}

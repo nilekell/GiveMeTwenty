@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		22543F502BAA1BD3001C26B2 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22543F4F2BAA1BD3001C26B2 /* MenuBarView.swift */; };
+		22543F522BADC874001C26B2 /* SnoozePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22543F512BADC874001C26B2 /* SnoozePeriod.swift */; };
 		225570A82B89179600DB8618 /* GiveMeTwentyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225570A72B89179600DB8618 /* GiveMeTwentyApp.swift */; };
 		225570AA2B89179600DB8618 /* ConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225570A92B89179600DB8618 /* ConfigurationView.swift */; };
 		225570AC2B89179700DB8618 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 225570AB2B89179700DB8618 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		22543F4F2BAA1BD3001C26B2 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
+		22543F512BADC874001C26B2 /* SnoozePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnoozePeriod.swift; sourceTree = "<group>"; };
 		225570A42B89179600DB8618 /* GiveMeTwenty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GiveMeTwenty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		225570A72B89179600DB8618 /* GiveMeTwentyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiveMeTwentyApp.swift; sourceTree = "<group>"; };
 		225570A92B89179600DB8618 /* ConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationView.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				22584EE82B8E8770007392F5 /* Views */,
 				225570A72B89179600DB8618 /* GiveMeTwentyApp.swift */,
 				22D9FB3D2B9E03760014F132 /* AppDelegate.swift */,
+				22543F512BADC874001C26B2 /* SnoozePeriod.swift */,
 				22668B202B94BE76009B1516 /* SettingsKeys.swift */,
 				22DB49CA2B9E5A6D00559C1F /* NSSoundExtension.swift */,
 				225570AB2B89179700DB8618 /* Assets.xcassets */,
@@ -179,6 +182,7 @@
 				22668B252B9A56EC009B1516 /* CoverView.swift in Sources */,
 				22DB49CB2B9E5A6D00559C1F /* NSSoundExtension.swift in Sources */,
 				22668B272B9B69E0009B1516 /* BlurEffectView.swift in Sources */,
+				22543F522BADC874001C26B2 /* SnoozePeriod.swift in Sources */,
 				225570A82B89179600DB8618 /* GiveMeTwentyApp.swift in Sources */,
 				22668B212B94BE76009B1516 /* SettingsKeys.swift in Sources */,
 			);
