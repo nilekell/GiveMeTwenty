@@ -22,18 +22,23 @@ struct MenuBarView: View {
         Text("Snooze for...")
 
         Button("30 minutes") {
+            appDelegate.snoozeTimer(forPeriod: .thirty)
         }
 
         Button("1 hour") {
+            appDelegate.snoozeTimer(forPeriod: .one)
         }
 
         Button("2 hours") {
+            appDelegate.snoozeTimer(forPeriod: .two)
         }
 
         Button("4 hours") {
+            appDelegate.snoozeTimer(forPeriod: .four)
         }
 
         Button("Until tomorrow") {
+            appDelegate.snoozeTimer(forPeriod: .untilTomorrow)
         }
 
         Divider()
