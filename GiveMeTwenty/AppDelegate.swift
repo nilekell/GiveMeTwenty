@@ -85,7 +85,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         
         switch forPeriod {
             case .thirty:
-            snoozePeriodInSeconds = 30 * 60
+                snoozePeriodInSeconds = 30 * 60
             case .one:
                 snoozePeriodInSeconds = 1 * 60 * 60
             case .two:
