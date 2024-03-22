@@ -55,9 +55,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     
     func setupTimer() {
         // Cancel any existing timer before setting up a new one to avoid having multiple timers active simultaneously.
-        if timer?.isValid != nil && timer?.isValid == true {
-            timer?.invalidate()
-        }
+        cancelTimer()
         
         let reminderFrequencyInSeconds = reminderFrequency * 60 * 60
         // let reminderFrequencyInSeconds = 5
@@ -71,6 +69,45 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
             print("Failed to add timer to run loop.")
         }
     }
+    
+    func cancelTimer() {
+        if timer?.isValid != nil && timer?.isValid == true {
+            timer?.invalidate()
+        }
+    }
+    
+    func snoozeTimer(forPeriod: SnoozePeriod) {
+        
+        // cancel any existing timer
+        cancelTimer()
+        
+        var snoozePeriodInSeconds: Int?
+        
+        switch forPeriod {
+            case .thirty:
+            snoozePeriodInSeconds = 30 * 60
+            case .one:
+                snoozePeriodInSeconds = 1 * 60 * 60
+            case .two:
+                snoozePeriodInSeconds = 2 * 60 * 60
+            case .four:
+                snoozePeriodInSeconds = 4 * 60 * 60
+            case .untilTomorrow:
+                let calendar = Calendar.current
+                if let startOfTomorrow = calendar.nextDate(after: Date.now, matching: DateComponents(hour: 0, minute: 0, second: 0), matchingPolicy: .nextTime) {
+                    // Calculate the difference in seconds between now and the start of tomorrow
+                    let now = Date()
+                    snoozePeriodInSeconds = Int(startOfTomorrow.timeIntervalSince(now))
+                }
+        }
+        
+        // force unwrapping as every case in SnoozePeriod has been met in switch statement
+        DispatchQueue.main.asyncAfter(deadline: .now() + TimeInterval(snoozePeriodInSeconds!)) {
+            self.setupTimer()
+        }
+        
+    }
+    
     
     @objc func timerAction() {
         // whenever timer triggers, show the cover window
@@ -125,4 +162,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
             window.close()
         }
     }
+}
+
+enum SnoozePeriod {
+    case thirty
+    case one
+    case two
+    case four
+    case untilTomorrow
 }
