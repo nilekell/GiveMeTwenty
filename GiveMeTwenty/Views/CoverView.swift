@@ -42,4 +42,5 @@ struct CoverView: View {
 
 #Preview {
     CoverView()
+        .frame(minWidth: 500, minHeight: 500)
 }
