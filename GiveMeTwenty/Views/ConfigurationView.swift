@@ -76,8 +76,8 @@ struct ConfigurationView: View {
                 .frame(width: 200)
                 .textFieldStyle(.roundedBorder)
                 .controlSize(.large)
-                .padding([.horizontal, .bottom], 8)
-                .padding(.bottom, 16)
+                .padding([.horizontal], 8)
+                .padding(.bottom, 24)
                 .onChange(of: popUpMenuMessage) { oldValue, newValue in
                     updateNotificationConfig(notificationsEnabled, newValue, reminderFrequency)
                 }
