@@ -33,7 +33,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         return false
     }
     
-    func setDefaultSettingsValues() {
+    private func setDefaultSettingsValues() {
         // uncomment this line and re-run app to reset all app settings
         // UserDefaults.standard.setValue(true, forKey: SettingsKeys.isFirstAppOpen)
         
@@ -70,7 +70,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         }
     }
     
-    func cancelTimer() {
+    private func cancelTimer() {
         if timer?.isValid != nil && timer?.isValid == true {
             timer?.invalidate()
         }
@@ -109,7 +109,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     }
     
     
-    @objc func timerAction() {
+    @objc private func timerAction() {
         // whenever timer triggers, show the cover window
         if let window = self.coverWindow {
             if window.isKeyWindow {
@@ -137,19 +137,19 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         }
     }
     
-    func setupConfigurationWindow() {
+    private func setupConfigurationWindow() {
         configurationWindow = NSApplication.shared.windows.first(where: { $0.title == "ConfigurationView" })
         configurationWindow?.level = .popUpMenu
         configurationWindow?.isReleasedWhenClosed = false
     }
     
-    func hideConfigurationWindow() {
+    private func hideConfigurationWindow() {
         if let window = self.configurationWindow {
             window.close()
         }
     }
     
-    func setupCoverWindow() {
+    private func setupCoverWindow() {
         coverWindow = NSApplication.shared.windows.first(where: { $0.title == "CoverView" })
         coverWindow?.standardWindowButton(.closeButton)?.isHidden = true
         coverWindow?.standardWindowButton(.miniaturizeButton)?.isHidden = true
