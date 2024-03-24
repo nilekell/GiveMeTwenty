@@ -15,6 +15,7 @@ struct MenuBarView: View {
     
     var body: some View {
         Button("Just did twenty") {
+            appDelegate.setupTimer()
         }
 
         Divider()
