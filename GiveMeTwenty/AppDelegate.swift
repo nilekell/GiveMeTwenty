@@ -16,6 +16,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     @AppStorage(SettingsKeys.isFirstAppOpen) private var isFirstAppOpen: Bool = true
     @AppStorage(SettingsKeys.coverViewDuration) private var coverViewDuration: Double = 60.0
     @AppStorage(SettingsKeys.selectedSound) private var selectedSound: String = NSSound.Sound.basso.rawValue
+    @AppStorage(SettingsKeys.currentStreak) private var currentStreak: Int = 0
+    @AppStorage(SettingsKeys.skips) private var skips: Int = 0
+    @AppStorage(SettingsKeys.sets) private var sets: Int = 0
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         setDefaultSettingsValues()
@@ -42,7 +45,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
             let defaults = UserDefaults.standard
             
             defaults.setValue(false, forKey: SettingsKeys.isFirstAppOpen)
-            
+            defaults.setValue(0, forKey: SettingsKeys.currentStreak)
+            defaults.setValue(0, forKey: SettingsKeys.skips)
+            defaults.setValue(0, forKey: SettingsKeys.sets)
             defaults.setValue(2, forKey: SettingsKeys.reminderFrequency)
             defaults.setValue(false, forKey: SettingsKeys.runWhenComputerStarts)
             defaults.setValue(true, forKey: SettingsKeys.showTimerInMenuBar)

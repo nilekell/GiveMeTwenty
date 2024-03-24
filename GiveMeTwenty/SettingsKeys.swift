@@ -16,4 +16,7 @@ enum SettingsKeys {
     static let notificationsEnabled = "notificationsEnabled"
     static let coverViewDuration = "coverViewDuration"
     static let selectedSound = "selectedSound"
+    static let currentStreak = "currentStreak"
+    static let skips = "skips"
+    static let sets = "sets"
 }

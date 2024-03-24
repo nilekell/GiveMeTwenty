@@ -13,6 +13,8 @@ struct CoverView: View {
     
     @AppStorage(SettingsKeys.popUpMenuMessage) private var popUpMenuMessage: String = "Time to give me twenty!"
     
+    @AppStorage(SettingsKeys.currentStreak) private var currentStreak: Int = 0
+    
     var body: some View {
         VStack {
             Text(popUpMenuMessage)
