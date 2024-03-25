@@ -46,10 +46,10 @@ struct MenuBarView: View {
         Divider()
 
         Button("Preferences...") {
-            // adding activate() and makeKeyAndOrderFront() allow configuration window to always come to front
             NSApplication.shared.activate(ignoringOtherApps: true)
             openWindow(id: "configuration-view-window")
-            appDelegate.configurationWindow?.makeKeyAndOrderFront(self)
+            appDelegate.configurationWindow?.makeKey()
+            appDelegate.configurationWindow?.orderFrontRegardless()
         }
 
         Divider()
