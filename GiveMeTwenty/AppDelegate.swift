@@ -40,10 +40,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         // uncomment this line and re-run app to reset all app settings
         // UserDefaults.standard.setValue(true, forKey: SettingsKeys.isFirstAppOpen)
         
+        let defaults = UserDefaults.standard
+        
         if isFirstAppOpen {
             print("Setting default values for first time.")
-            let defaults = UserDefaults.standard
-            
             defaults.setValue(false, forKey: SettingsKeys.isFirstAppOpen)
             defaults.setValue(0, forKey: SettingsKeys.currentStreak)
             defaults.setValue(0, forKey: SettingsKeys.skips)
@@ -56,6 +56,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
             defaults.setValue(60.0, forKey: SettingsKeys.coverViewDuration)
             defaults.setValue(NSSound.Sound.basso.rawValue, forKey: SettingsKeys.selectedSound)
         }
+        
+        print("isFirstAppOpen: \(defaults.bool(forKey: SettingsKeys.isFirstAppOpen))")
+        print("currentStreak: \(defaults.integer(forKey: SettingsKeys.currentStreak))")
+        print("skips: \(defaults.integer(forKey: SettingsKeys.skips))")
+        print("sets: \(defaults.integer(forKey: SettingsKeys.sets))")
+        print("reminderFrequency: \(defaults.integer(forKey: SettingsKeys.reminderFrequency))")
+        print("runWhenComputerStarts: \(defaults.bool(forKey: SettingsKeys.runWhenComputerStarts))")
+        print("showTimerInMenuBar: \(defaults.bool(forKey: SettingsKeys.showTimerInMenuBar))")
+        print("popUpMenuMessage: \(defaults.string(forKey: SettingsKeys.popUpMenuMessage) ?? "N/A")")
+        print("notificationsEnabled: \(defaults.bool(forKey: SettingsKeys.notificationsEnabled))")
+        print("coverViewDuration: \(defaults.double(forKey: SettingsKeys.coverViewDuration))")
+        print("selectedSound: \(defaults.string(forKey: SettingsKeys.selectedSound) ?? "N/A")")
     }
     
     func setupTimer() {
@@ -110,7 +122,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         DispatchQueue.main.asyncAfter(deadline: .now() + TimeInterval(snoozePeriodInSeconds!)) {
             self.setupTimer()
         }
-        
     }
     
     
@@ -137,6 +148,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
                     NSSound.play(selectedSoundEnum)
                 }
                 self.hideCoverWindow()
+                print("streak: \(self.currentStreak)")
+                self.incrementStreak()
+                
                 print("closed CoverView after: \(self.coverViewDuration)")
             }
         }
@@ -166,5 +180,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         if let window = self.coverWindow {
             window.close()
         }
+    }
+    
+    func resetStreak() {
+        currentStreak = 0
+    }
+    
+    func incrementStreak() {
+        currentStreak += 1
+        sets += 1
+    }
+    
+    func incrementSkip() {
+        skips += 1
     }
 }
