@@ -27,9 +27,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         setupConfigurationWindow()
         
         setupTimer()
-        
-        print(NSApplication.shared.windows.count)
-        print(NSApplication.shared.windows)
     }
     
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
@@ -138,7 +135,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
                 let calendar = Calendar.current
                 if let startOfTomorrow = calendar.nextDate(after: Date.now, matching: DateComponents(hour: 0, minute: 0, second: 0), matchingPolicy: .nextTime) {
                     // Calculate the difference in seconds between now and the start of tomorrow
-                    let now = Date()
+                    let now = Date.now
                     snoozePeriodInSeconds = Int(startOfTomorrow.timeIntervalSince(now))
                 }
         }
