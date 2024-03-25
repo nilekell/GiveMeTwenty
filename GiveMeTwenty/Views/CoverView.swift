@@ -15,27 +15,48 @@ struct CoverView: View {
     
     @AppStorage(SettingsKeys.currentStreak) private var currentStreak: Int = 0
     
+    @State private var hideSkipButton: Bool = false
+    
     var body: some View {
         VStack {
             Text(popUpMenuMessage)
                 .font(.system(size: 64))
                 .bold()
             
-            Button(action: closeScreen) {
-                Label("Close", systemImage: "arrow.up")
+            Text("Current streak: \(currentStreak)")
+                .font(.system(size: 16))
+                .padding()
+            
+            if !hideSkipButton {
+                Button(action: skipButtonPressed) {
+                    Label("Skip", systemImage: "arrow.right")
+                }
+            }
+            
+            if hideSkipButton {
+                Text("Are you sure you want to skip? Skipping will reset your streak.")
+                    .foregroundStyle(.red)
+                    .bold()
+                    .padding()
+                
+                Button(action: secondSkipButtonPressed) {
+                    Label("Skip", systemImage: "arrow.right")
+                }
             }
         }
         // adding focusable() enables onKeyPress to work
         .focusable()
         // removing blue outline
         .focusEffectDisabled()
-        .onKeyPress(keys: [.escape, .space, .return]) { press in
-            closeScreen()
-            return .handled
-        }
     }
     
-    func closeScreen() {
+    func skipButtonPressed() {
+        hideSkipButton = true
+    }
+    
+    func secondSkipButtonPressed() {
+        appDelegate.resetStreak()
+        appDelegate.incrementSkip()
         appDelegate.hideCoverWindow()
     }
 }
