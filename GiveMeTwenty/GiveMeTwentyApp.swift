@@ -20,16 +20,6 @@ struct GiveMeTwentyApp: App {
         }
         .menuBarExtraStyle(.menu)
         
-        Window("CoverView", id: "cover-view-window", content: {
-            GeometryReader { geometry in
-                CoverView()
-                    .frame(minWidth: geometry.size.width, minHeight: geometry.size.height)
-                    .background(BlurEffectView().ignoresSafeArea())
-                    .environmentObject(appDelegate)
-            }
-            
-        }).windowStyle(.hiddenTitleBar) // hiding title bar itself
-        
         Window("ConfigurationView", id: "configuration-view-window", content: {
             ConfigurationView()
                 .navigationTitle("Customise")

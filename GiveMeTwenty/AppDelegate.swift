@@ -8,9 +8,10 @@
 import SwiftUI
 
 class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
-    var timer: Timer?
-    var coverWindow: NSWindow?
+    private var timer: Timer?
     var configurationWindow: NSWindow?
+    var coverWindow: NSWindow?
+    private var coverViewIsShowing: Bool = false
     
     @AppStorage(SettingsKeys.reminderFrequency) private var reminderFrequency: Int = 2
     @AppStorage(SettingsKeys.isFirstAppOpen) private var isFirstAppOpen: Bool = true
@@ -24,12 +25,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         setDefaultSettingsValues()
         
         setupConfigurationWindow()
-        hideConfigurationWindow()
         
         setupTimer()
         
-        setupCoverWindow()
-        hideCoverWindow()
+        print(NSApplication.shared.windows.count)
+        print(NSApplication.shared.windows)
     }
     
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
@@ -126,34 +126,27 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     
     
     @objc private func timerAction() {
+        if coverViewIsShowing {
+            // do not make window key, active, main, or at the front, if it already is being displayed
+            // NOTE: if user clicks on another application or window, then isKeyWindow will be false
+            print("timerAction() skipped, as CoverView already being shown")
+            return
+        }
+        
         // whenever timer triggers, show the cover window
-        if let window = self.coverWindow {
-            if window.isKeyWindow {
-                // do not make window key, active, main, or at the front, if it already is being displayed
-                // NOTE: if user clicks on another application or window, then isKeyWindow will be false
-                print("timerAction() skipped, as CoverView already being shown")
-                return
+        showCoverWindow()
+        
+        print("CoverView presented for: \(coverViewDuration)s")
+        // automatically closing screen after coverViewDuration
+        DispatchQueue.main.asyncAfter(deadline: .now() + coverViewDuration) {
+            if let selectedSoundEnum = NSSound.Sound(rawValue: self.selectedSound) {
+                NSSound.play(selectedSoundEnum)
             }
             
-            // bring window to front
-            window.makeKeyAndOrderFront(nil)
-            // focus window (allows window to be interacted with, without having to click on it first)
-            NSApplication.shared.activate(ignoringOtherApps: true)
+            self.hideCoverWindow()
+            self.incrementStreak()
             
-            setupCoverWindow()
-            
-            print("CoverView presented for: \(coverViewDuration)")
-            // automatically closing screen after coverViewDuration
-            DispatchQueue.main.asyncAfter(deadline: .now() + coverViewDuration) {
-                if let selectedSoundEnum = NSSound.Sound(rawValue: self.selectedSound) {
-                    NSSound.play(selectedSoundEnum)
-                }
-                self.hideCoverWindow()
-                print("streak: \(self.currentStreak)")
-                self.incrementStreak()
-                
-                print("closed CoverView after: \(self.coverViewDuration)")
-            }
+            print("closed CoverView after: \(self.coverViewDuration)")
         }
     }
     
@@ -169,17 +162,37 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         }
     }
     
-    private func setupCoverWindow() {
-        coverWindow = NSApplication.shared.windows.first(where: { $0.title == "CoverView" })
+    private func showCoverWindow() {
+        // set variable to track if cover view is being displayed
+        coverViewIsShowing = true
+        
+        let screenSize = NSScreen.main!.frame
+        let hostingController = NSHostingController(rootView: CoverView()
+            .frame(minWidth: screenSize.size.width, minHeight: screenSize.size.height)
+            .background(BlurEffectView().ignoresSafeArea())
+            .frame(minWidth: screenSize.size.width, minHeight: screenSize.size.height)
+            .environmentObject(self))
+        
+        coverWindow = NSWindow(contentViewController: hostingController)
+        coverWindow?.titleVisibility = .hidden
+        coverWindow?.titlebarAppearsTransparent = true
+        coverWindow?.titlebarSeparatorStyle = .none
         coverWindow?.standardWindowButton(.closeButton)?.isHidden = true
         coverWindow?.standardWindowButton(.miniaturizeButton)?.isHidden = true
         coverWindow?.standardWindowButton(.zoomButton)?.isHidden = true
         coverWindow?.level = .popUpMenu
+        coverWindow?.isReleasedWhenClosed = false
+        
+        // bring window to front
+        coverWindow?.makeKeyAndOrderFront(nil)
+        // focus window (allows window to be interacted with, without having to click on it first)
+        NSApplication.shared.activate(ignoringOtherApps: true)
     }
     
     func hideCoverWindow() {
         if let window = self.coverWindow {
             window.close()
+            coverViewIsShowing = false
         }
     }
     
