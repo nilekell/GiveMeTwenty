@@ -87,6 +87,31 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         }
     }
     
+    @objc private func timerAction() {
+        if coverViewIsShowing {
+            // do not make window key, active, main, or at the front, if it already is being displayed
+            // NOTE: if user clicks on another application or window, then isKeyWindow will be false
+            print("timerAction() skipped, as CoverView already being shown")
+            return
+        }
+        
+        // whenever timer triggers, show the cover window
+        showCoverWindow()
+        
+        print("CoverView presented for: \(coverViewDuration)s")
+        // automatically closing screen after coverViewDuration
+        DispatchQueue.main.asyncAfter(deadline: .now() + coverViewDuration) {
+            if let selectedSoundEnum = NSSound.Sound(rawValue: self.selectedSound) {
+                NSSound.play(selectedSoundEnum)
+            }
+            
+            self.hideCoverWindow()
+            self.incrementStreak()
+            
+            print("closed CoverView after: \(self.coverViewDuration)")
+        }
+    }
+    
     private func cancelTimer() {
         if timer?.isValid != nil && timer?.isValid == true {
             timer?.invalidate()
@@ -121,32 +146,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         // force unwrapping as every case in SnoozePeriod has been met in switch statement
         DispatchQueue.main.asyncAfter(deadline: .now() + TimeInterval(snoozePeriodInSeconds!)) {
             self.setupTimer()
-        }
-    }
-    
-    
-    @objc private func timerAction() {
-        if coverViewIsShowing {
-            // do not make window key, active, main, or at the front, if it already is being displayed
-            // NOTE: if user clicks on another application or window, then isKeyWindow will be false
-            print("timerAction() skipped, as CoverView already being shown")
-            return
-        }
-        
-        // whenever timer triggers, show the cover window
-        showCoverWindow()
-        
-        print("CoverView presented for: \(coverViewDuration)s")
-        // automatically closing screen after coverViewDuration
-        DispatchQueue.main.asyncAfter(deadline: .now() + coverViewDuration) {
-            if let selectedSoundEnum = NSSound.Sound(rawValue: self.selectedSound) {
-                NSSound.play(selectedSoundEnum)
-            }
-            
-            self.hideCoverWindow()
-            self.incrementStreak()
-            
-            print("closed CoverView after: \(self.coverViewDuration)")
         }
     }
     
